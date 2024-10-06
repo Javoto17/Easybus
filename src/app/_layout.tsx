@@ -1,4 +1,5 @@
 import 'react-native-reanimated';
+import Constants from 'expo-constants';
 
 import { Slot } from 'expo-router';
 
@@ -13,7 +14,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
-export default function RootLayout() {
+import '../styles/global.css';
+
+function RootLayout() {
   useReactQueryDevTools(queryClient);
 
   const colorScheme = useColorScheme();
@@ -26,3 +29,11 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+
+let AppEntryPoint = RootLayout;
+
+if (Constants.expoConfig.extra.storybookEnabled === 'true') {
+  AppEntryPoint = require('./../../.storybook').default;
+}
+
+export default AppEntryPoint;

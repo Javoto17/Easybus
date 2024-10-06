@@ -3,7 +3,11 @@ import React, { useEffect } from 'react';
 import { Stack } from 'expo-router';
 
 import { useMutation } from '@tanstack/react-query';
+
 import { AuthRepository } from '@/modules/auth/domain/AuthRepository';
+import { login } from '@/modules/auth/application/login/logIn';
+
+import { StatusBar } from 'expo-status-bar';
 
 interface AuthFlowProps {
   authRepository: AuthRepository;
@@ -12,7 +16,7 @@ interface AuthFlowProps {
 export default function AuthFlow({ authRepository }: AuthFlowProps) {
   const { isSuccess, isError, mutate, isIdle } = useMutation({
     mutationFn: async (newTodo) => {
-      return authRepository.login();
+      return login(authRepository);
     },
   });
 
@@ -31,16 +35,17 @@ export default function AuthFlow({ authRepository }: AuthFlowProps) {
     }
   }, [isSuccess]);
 
-  console.log('isIdle', isIdle);
-  console.log('isSuccess', isSuccess);
-
   if (isIdle || !isSuccess) {
     return null;
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-    </Stack>
+    <>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="stop/[id]" />
+      </Stack>
+      <StatusBar style="light" />
+    </>
   );
 }

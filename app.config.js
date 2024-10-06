@@ -1,0 +1,57 @@
+export default {
+  expo: {
+    name: 'easybus',
+    slug: 'easybus',
+    version: '1.0.0',
+    orientation: 'portrait',
+    icon: './src/assets/images/icon.png',
+    scheme: 'myapp',
+    userInterfaceStyle: 'automatic',
+    splash: {
+      image: './src/assets/images/splash.png',
+      resizeMode: 'contain',
+      backgroundColor: '#ffffff',
+    },
+    ios: {
+      supportsTablet: true,
+    },
+    android: {
+      adaptiveIcon: {
+        foregroundImage: './src/assets/images/adaptive-icon.png',
+        backgroundColor: '#ffffff',
+      },
+    },
+    web: {
+      bundler: 'metro',
+      output: 'static',
+      favicon: './src/assets/images/favicon.png',
+    },
+    plugins: [
+      'expo-router',
+      [
+        'expo-font',
+        {
+          fonts: [
+            './src/assets/Poppins-Light.ttf',
+            './src/assets/Poppins-Regular.ttf',
+            './src/assets/Poppins-SemiBold.ttf',
+            './src/assets/Poppins-Bold.ttf',
+          ],
+        },
+      ],
+    ],
+    experiments: {
+      typedRoutes: true,
+    },
+    extra: {
+      storybookEnabled: process.env.STORYBOOK_ENABLED,
+      router: {
+        origin: false,
+      },
+      eas: {
+        projectId: '8bf42f66-2b2e-4b46-867a-d98dc700874d',
+      },
+    },
+    owner: 'javoto17',
+  },
+};
