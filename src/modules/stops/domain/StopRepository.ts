@@ -5,5 +5,5 @@ export interface StopRepository {
   getStopDetail: (stopId: string) => Promise<Stop | null>;
   getStops: () => Promise<Stop[]>;
   getStopsByRoute: (routeId: string) => Promise<Stop[]>;
-  getTimeArrivalsByStop: (stopId: string) => Promise<StopArrival | null>;
+  getTimeArrivalsByStop: (stopId: string) => Promise<StopArrival[] | null>;
 }

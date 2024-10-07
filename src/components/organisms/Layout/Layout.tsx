@@ -10,7 +10,7 @@ interface LayoutProps {
 }
 
 const layoutStyle = tv({
-  base: 'bg-primary-bg flex-1 pt-[--safe-top]',
+  base: 'bg-primary flex-1 pt-[--safe-top]',
 });
 
 const Layout: React.FC<LayoutProps> = ({ children, className }) => {

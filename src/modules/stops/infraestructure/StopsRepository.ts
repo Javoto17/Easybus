@@ -51,7 +51,7 @@ export function generateStopRepository(
           }
         );
 
-        const data = res?.data?.[0]?.Arrive?.[0];
+        const data = res?.data?.[0]?.Arrive;
 
         return data;
       } catch (error) {
