@@ -1,17 +1,19 @@
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { View, Text } from 'react-native';
 
-const StopDetail = () => {
+import StopDetail from '@/components/screens/StopDetail/StopDetail';
+import { generateClientRepository } from '@/modules/client/infrastructure/ClientRepository';
+import { generateStopRepository } from '@/modules/stops/infraestructure/StopsRepository';
+import { generateStorageRepository } from '@/modules/storage/infraestructure/StorageRepository';
+
+const storageRepository = generateStorageRepository();
+const clientRepository = generateClientRepository(storageRepository);
+const stopRepository = generateStopRepository(clientRepository);
+
+const StopDetailScreen = () => {
   const local = useLocalSearchParams<{ id: string }>();
 
-  console.log(local);
-
-  return (
-    <View>
-      <Text>{`Stop detail ${local?.id}`}</Text>
-    </View>
-  );
+  return <StopDetail id={local?.id} stopRepository={stopRepository} />;
 };
 
-export default StopDetail;
+export default StopDetailScreen;

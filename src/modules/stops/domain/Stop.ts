@@ -1,3 +1,4 @@
+import { StopArrival } from './StopArrival';
 import { Dataline } from './StopDataLine';
 
 export type Stop = {
@@ -6,4 +7,5 @@ export type Stop = {
   geometry: string; // Geographical position
   stop: string; // Stop ID
   dataline: Dataline[];
+  arrives?: StopArrival[];
 };
