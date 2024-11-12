@@ -24,8 +24,19 @@ export function generateAuthRepository(
   return {
     login: async (): Promise<boolean> => {
       const auth = await storageRepository.get<string>('auth');
+      const dateTokenExpirationStorage =
+        await storageRepository.get<string>('tokenSecExpiration');
 
-      if (!auth) {
+      let isLogged = false;
+
+      if (
+        !!dateTokenExpirationStorage &&
+        typeof dateTokenExpirationStorage === 'string'
+      ) {
+        isLogged = !!auth && new Date(dateTokenExpirationStorage) > new Date();
+      }
+
+      if (!isLogged) {
         const res = await clientRepository.get<LoginResponse>(
           API_URL + `/mobilitylabs/user/login/`,
           {
@@ -35,7 +46,14 @@ export function generateAuthRepository(
 
         const data = res?.data?.[0];
 
+        let dateTokenExpiration = new Date();
+
+        dateTokenExpiration.setSeconds(
+          dateTokenExpiration.getSeconds() + Number(data?.tokenSecExpiration)
+        );
+
         storageRepository.set('auth', data?.accessToken);
+        storageRepository.set('tokenSecExpiration', dateTokenExpiration);
       }
 
       return !!auth;

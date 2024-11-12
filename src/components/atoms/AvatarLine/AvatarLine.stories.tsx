@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { default as ListOfStops } from './ListOfStops';
+import { default as AvatarLine } from './AvatarLine';
 
 const meta = {
-  title: 'organisms/ListOfStops',
-  component: ListOfStops,
+  title: 'atoms/AvatarLine',
+  component: AvatarLine,
   parameters: {
     notes: 'Use this example to test the software keyboard related issues.',
   },
-} satisfies Meta<typeof ListOfStops>;
+} satisfies Meta<typeof AvatarLine>;
 
 export default meta;
 
@@ -15,6 +15,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   args: {
-    data: [],
+    children: '143',
   },
 };

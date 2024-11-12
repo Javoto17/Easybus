@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { default as StopItem } from './StopItem';
 
 const meta = {
-  title: 'StopItem',
+  title: 'molecules/StopItem',
   component: StopItem,
   parameters: {
     notes: 'Use this example to test the software keyboard related issues.',

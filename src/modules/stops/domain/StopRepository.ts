@@ -6,4 +6,7 @@ export interface StopRepository {
   getStops: () => Promise<Stop[]>;
   getStopsByRoute: (routeId: string) => Promise<Stop[]>;
   getTimeArrivalsByStop: (stopId: string) => Promise<StopArrival[] | null>;
+  saveStopFavorite: (stop: Stop) => Promise<boolean>;
+  removeStopFavorite: (stopId: string) => Promise<boolean>;
+  getStopIsFavorite: (stopId: string) => Promise<boolean>;
 }

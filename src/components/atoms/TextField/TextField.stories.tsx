@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { default as TextField } from './TextField';
 
 const meta = {
-  title: 'TextInput',
+  title: 'atoms/TextField',
   component: TextField,
   parameters: {
     notes: 'Use this example to test the software keyboard related issues.',

@@ -1,5 +1,5 @@
-import type { PropsWithChildren, ReactElement } from 'react';
-import { View } from 'react-native';
+import { PropsWithChildren, ReactElement } from 'react';
+import { useWindowDimensions, View } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -7,13 +7,16 @@ import Animated, {
   useScrollViewOffset,
 } from 'react-native-reanimated';
 
-const HEADER_HEIGHT = 250;
-
 type Props = PropsWithChildren<{
   headerContent: ReactElement;
+  height?: number;
 }>;
 
-export default function ParallaxScrollView({ children, headerContent }: Props) {
+export default function ParallaxScrollView({
+  children,
+  headerContent,
+  height = 250,
+}: Props) {
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
 
@@ -23,14 +26,14 @@ export default function ParallaxScrollView({ children, headerContent }: Props) {
         {
           translateY: interpolate(
             scrollOffset.value,
-            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75]
+            [-height, 0, height],
+            [-height / 2, 0, height * 0.75]
           ),
         },
         {
           scale: interpolate(
             scrollOffset.value,
-            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+            [-height, 0, height],
             [2, 1, 1]
           ),
         },
@@ -41,12 +44,19 @@ export default function ParallaxScrollView({ children, headerContent }: Props) {
   return (
     <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
       <Animated.View
-        className={'h-[250px] overflow-hidden'}
-        style={[headerAnimatedStyle]}
+        className="overflow-hidden bg-white"
+        style={[
+          headerAnimatedStyle,
+          {
+            height,
+          },
+        ]}
       >
         {headerContent}
       </Animated.View>
-      <View className="flex-1 gap-4 overflow-hidden py-8">{children}</View>
+      <View className="-mt-24 flex-1 gap-4 overflow-hidden py-8">
+        {children}
+      </View>
     </Animated.ScrollView>
   );
 }

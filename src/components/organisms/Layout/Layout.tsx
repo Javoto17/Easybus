@@ -2,18 +2,28 @@ import { vars } from 'nativewind';
 import React from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { tv } from 'tailwind-variants';
+import { tv } from '@/styles/tv';
 
 interface LayoutProps {
   children: React.ReactNode;
   className?: string;
+  withHeader?: boolean;
 }
 
 const layoutStyle = tv({
-  base: 'bg-primary flex-1 pt-[--safe-top]',
+  base: 'flex-1 bg-primary pt-[--safe-top]',
+  variants: {
+    header: {
+      true: 'pt-0',
+    },
+  },
 });
 
-const Layout: React.FC<LayoutProps> = ({ children, className }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  className,
+  withHeader = false,
+}) => {
   const insets = useSafeAreaInsets();
 
   return (
@@ -21,6 +31,7 @@ const Layout: React.FC<LayoutProps> = ({ children, className }) => {
       <View
         className={layoutStyle({
           class: className,
+          header: withHeader,
         })}
       >
         {children}

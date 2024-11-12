@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TextInputProps } from 'react-native';
 
-import { tv } from 'tailwind-variants';
+import { tv } from '@/styles/tv';
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
@@ -11,7 +11,7 @@ interface TextFieldProps extends TextInputProps {
 }
 
 const inputContainer = tv({
-  base: 'flex flex-row rounded-full bg-primary py-2 px-2 items-center border-[1px] border-primary',
+  base: 'flex flex-row items-center rounded-full border-[1px] border-primary bg-primary px-2 py-2',
   variants: {
     type: {
       text: '',
@@ -24,7 +24,7 @@ const inputContainer = tv({
 });
 
 const input = tv({
-  base: 'flex-1 h-10 placeholder:text-placeholder text-secondary',
+  base: 'h-10 flex-1 text-secondary placeholder:text-placeholder',
   variants: {
     type: {
       text: '',

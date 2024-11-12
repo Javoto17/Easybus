@@ -6,6 +6,12 @@ export type Stop = {
   name: string; // Stop name
   geometry: Geometry; // Geographical position
   stop: string; // Stop ID
-  dataline: Array<Dataline>;
+  dataLine: Array<Dataline>;
   arrives?: Array<StopArrival>;
+  isFavorite?: boolean;
+  postalAddress: string;
+};
+
+export const stopIsFavorite = (stop: Stop) => {
+  return !!stop?.isFavorite;
 };

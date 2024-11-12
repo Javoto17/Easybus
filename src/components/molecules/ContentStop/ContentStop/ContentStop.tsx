@@ -1,5 +1,6 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Suspense } from 'react';
+import ContentLoader, { Rect } from 'react-content-loader/native';
+import { View, Text, useWindowDimensions } from 'react-native';
 
 interface ContentStopProps {
   children: React.ReactNode;
@@ -24,16 +25,18 @@ interface ContentStopContentProps {
 
 ContentStop.Card = ({ children }: ContentStopCardProps) => {
   return (
-    <View className="bg-secondary overflow-hidden rounded-lg px-2 py-2 shadow-md">
+    <View className="overflow-hidden rounded-lg bg-secondary px-4 py-4 shadow-md">
       {children}
     </View>
   );
 };
 
 ContentStop.Title = ({ children }: ContentStopTitleProps) => {
-  return <Text className="text-primary z-10 mb-3 text-h400">{children}</Text>;
+  return <Text className="z-10 mb-3 text-h400 text-primary">{children}</Text>;
 };
 
 ContentStop.Content = ({ children, className }: ContentStopContentProps) => {
+  const Dimensions = useWindowDimensions();
+
   return <View className={className}>{children}</View>;
 };
