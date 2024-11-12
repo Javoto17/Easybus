@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TextInputProps } from 'react-native';
 
-import { tv } from 'tailwind-variants';
+import { tv } from '@/styles/tv';
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
@@ -11,17 +11,20 @@ interface TextFieldProps extends TextInputProps {
 }
 
 const inputContainer = tv({
-  base: 'flex flex-row rounded-full bg-secondary-bg py-2 px-2 items-center hover:bg-primary-bg',
+  base: 'flex flex-row items-center rounded-full border-[1px] border-primary bg-primary px-2 py-2',
   variants: {
     type: {
       text: '',
       search: 'pr-5',
     },
+    focus: {
+      true: 'border-active',
+    },
   },
 });
 
 const input = tv({
-  base: 'flex-1 h-10 placeholder:text-gray-1000',
+  base: 'h-10 flex-1 text-secondary placeholder:text-placeholder',
   variants: {
     type: {
       text: '',
@@ -36,12 +39,28 @@ const TextField: React.FC<TextFieldProps> = ({
   type = 'text',
   ...props
 }) => {
+  const [isFocus, setFocus] = useState(false);
+
   return (
     <View className="flex flex-col">
       {label && <Text className="mb-2 pl-3 text-sm">{label}</Text>}
-      <View className={inputContainer({ type })}>
+      <View className={inputContainer({ type, focus: isFocus })}>
         <TextInput
           {...props}
+          onFocus={(e) => {
+            setFocus(true);
+
+            if (typeof props?.onFocus === 'function') {
+              props?.onFocus(e);
+            }
+          }}
+          onBlur={(e) => {
+            setFocus(false);
+
+            if (typeof props?.onBlur === 'function') {
+              props?.onBlur(e);
+            }
+          }}
           placeholder={placeholder}
           className={input({
             type,

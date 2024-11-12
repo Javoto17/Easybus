@@ -13,9 +13,15 @@ export default {
       backgroundColor: '#ffffff',
     },
     ios: {
+      bundleIdentifier: 'com.easy.bus',
       supportsTablet: true,
     },
     android: {
+      config: {
+        googleMaps: {
+          apiKey: process.env.MAPS_API_KEY,
+        },
+      },
       adaptiveIcon: {
         foregroundImage: './src/assets/images/adaptive-icon.png',
         backgroundColor: '#ffffff',

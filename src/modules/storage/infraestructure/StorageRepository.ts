@@ -9,8 +9,10 @@ export function generateStorageRepository(): StorageRepository {
       const keyItem = `${APP_KEY}-${name}`;
       try {
         await AsyncStorage.setItem(keyItem, JSON.stringify(value));
+        console.log(keyItem, JSON.stringify(value));
       } catch (e) {
         console.log(`Error on setting ${keyItem}`);
+        return null;
       }
     },
     get: async (name) => {
@@ -26,6 +28,7 @@ export function generateStorageRepository(): StorageRepository {
         return null;
       } catch (e) {
         console.log(`Error on setting ${keyItem}`);
+        return null;
       }
     },
     delete: async (name): Promise<void> => {

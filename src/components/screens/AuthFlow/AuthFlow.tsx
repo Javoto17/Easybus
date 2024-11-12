@@ -1,17 +1,35 @@
-import { SplashScreen } from 'expo-router';
 import React, { useEffect } from 'react';
-import { Stack } from 'expo-router';
-
-import { useMutation } from '@tanstack/react-query';
-
-import { AuthRepository } from '@/modules/auth/domain/AuthRepository';
-import { login } from '@/modules/auth/application/login/logIn';
-
+import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { cssInterop } from 'nativewind';
+
+import BackButton from '@/components/molecules/BackButton/BackButton';
+import { login } from '@/modules/auth/application/login/logIn';
+import { AuthRepository } from '@/modules/auth/domain/AuthRepository';
+import { useMutation } from '@tanstack/react-query';
+import Header from '@/components/organisms/Header/Header';
 
 interface AuthFlowProps {
   authRepository: AuthRepository;
 }
+
+const StackContainer = cssInterop(
+  ({ headerStyle, ...props }: any) => (
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="stop/[id]"
+        options={{
+          header: (props) => <Header {...props} />,
+        }}
+      />
+    </Stack>
+  ),
+  {
+    headerClassName: 'headerStyle',
+    backClassName: '',
+  }
+);
 
 export default function AuthFlow({ authRepository }: AuthFlowProps) {
   const { isSuccess, isError, mutate, isIdle } = useMutation({
@@ -41,10 +59,7 @@ export default function AuthFlow({ authRepository }: AuthFlowProps) {
 
   return (
     <>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="stop/[id]" />
-      </Stack>
+      <StackContainer headerClassName="bg-primary text-primary" />
       <StatusBar style="light" />
     </>
   );

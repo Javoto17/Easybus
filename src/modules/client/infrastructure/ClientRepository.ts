@@ -1,25 +1,33 @@
+import { StorageRepository } from '@/modules/storage/domain/StorageRepository';
 import { ClientRepository } from '../domain/ClientRepository';
+import { Auth } from '@/modules/auth/domain/Auth';
 
-const DEFAULT_HEADERS = {
-  passkey: process.env.EXPO_PUBLIC_EMT_PASSKEY ?? '',
-  'X-ClientId': process.env.EXPO_PUBLIC_EMT_CLIENT_ID ?? '',
-};
-
-export const generateClientRepository = (): ClientRepository => {
+export const generateClientRepository = (
+  storageRepository: StorageRepository
+): ClientRepository => {
   return {
-    get,
-    post,
+    get: (url, options) => get(url, options, storageRepository),
+    post: (url, data, options) => post(url, data, options, storageRepository),
   };
 };
 
-async function get<T>(url: string, options: RequestInit = {}): Promise<T> {
-  console.log(DEFAULT_HEADERS);
+async function get<T>(
+  url: string,
+  options: RequestInit = {},
+  storageRepository: StorageRepository
+): Promise<T> {
+  const auth = await storageRepository.get<string>('auth');
+
   const fetchOptions: RequestInit = {
     ...options,
     method: 'GET',
     headers: {
-      ...DEFAULT_HEADERS,
       ...(options.headers || {}),
+      ...(!!auth
+        ? {
+            accessToken: auth,
+          }
+        : {}),
     },
   };
 
@@ -28,20 +36,28 @@ async function get<T>(url: string, options: RequestInit = {}): Promise<T> {
   if (!response.ok) {
     throw new Error(`Error fetching data: ${response.statusText}`);
   }
+
   return response.json() as Promise<T>;
 }
 
 async function post<T>(
   url: string,
   data: unknown,
-  options: RequestInit = {}
+  options: RequestInit = {},
+  storageRepository: StorageRepository
 ): Promise<T> {
+  const auth = await storageRepository.get<string>('auth');
+
   const fetchOptions: RequestInit = {
     ...options,
     method: 'POST',
     headers: {
-      ...DEFAULT_HEADERS,
       ...(options.headers || {}),
+      ...(!!auth
+        ? {
+            accessToken: auth,
+          }
+        : {}),
     },
     body: JSON.stringify(data),
   };

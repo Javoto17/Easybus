@@ -3,8 +3,8 @@ import { generateAuthRepository } from '@/modules/auth/infrastructure/AuthReposi
 import { generateClientRepository } from '@/modules/client/infrastructure/ClientRepository';
 import { generateStorageRepository } from '@/modules/storage/infraestructure/StorageRepository';
 
-const clientRepository = generateClientRepository();
 const storageRepository = generateStorageRepository();
+const clientRepository = generateClientRepository(storageRepository);
 const authRepository = generateAuthRepository(
   clientRepository,
   storageRepository

@@ -1,20 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { default as ListOfStops } from './ListOfStops';
+import { default as StopDetail } from './StopDetail';
 
 const meta = {
-  title: 'organisms/ListOfStops',
-  component: ListOfStops,
+  title: 'screens/StopDetail',
+  component: StopDetail,
   parameters: {
     notes: 'Use this example to test the software keyboard related issues.',
   },
-} satisfies Meta<typeof ListOfStops>;
+} satisfies Meta<typeof StopDetail>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  args: {
-    data: [],
-  },
+  args: {},
 };

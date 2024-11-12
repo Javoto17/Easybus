@@ -1,9 +1,10 @@
-import { useRouter } from 'expo-router';
 import React from 'react';
+import { useRouter } from 'expo-router';
 import {
   NativeSyntheticEvent,
   Text,
   TextInputSubmitEditingEventData,
+  View,
 } from 'react-native';
 
 import TextField from '@/components/atoms/TextField/TextField';
@@ -15,24 +16,23 @@ const HomeScreen = () => {
   const onSubmit = (
     event: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => {
-    console.log(event.nativeEvent.text);
-
     router.push(`stop/${event.nativeEvent.text}`);
   };
 
   return (
     <Layout className="px-margin">
-      <Text className="text-h100 text-primary-text font-poppins font-bold">
+      <Text className="font-poppins text-h100 font-bold text-primary-text">
         Easy Bus
       </Text>
-      <TextField
-        type="search"
-        label="label"
-        placeholder="Introduce código de parada"
-        keyboardType="number-pad"
-        onSubmitEditing={onSubmit}
-        returnKeyType="search"
-      />
+      <View className="mt-4">
+        <TextField
+          type="search"
+          placeholder="Introduce código de parada"
+          keyboardType="number-pad"
+          onSubmitEditing={onSubmit}
+          returnKeyType="search"
+        />
+      </View>
     </Layout>
   );
 };
