@@ -9,4 +9,5 @@ export interface StopRepository {
   saveStopFavorite: (stop: Stop) => Promise<boolean>;
   removeStopFavorite: (stopId: string) => Promise<boolean>;
   getStopIsFavorite: (stopId: string) => Promise<boolean>;
+  getStopsFavorites: () => Promise<Stop[]>;
 }

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { cssInterop } from 'nativewind';
+import React, { useEffect } from 'react';
 
-import BackButton from '@/components/molecules/BackButton/BackButton';
+import Header from '@/components/organisms/Header/Header';
 import { login } from '@/modules/auth/application/login/logIn';
 import { AuthRepository } from '@/modules/auth/domain/AuthRepository';
 import { useMutation } from '@tanstack/react-query';
-import Header from '@/components/organisms/Header/Header';
+import { View } from 'react-native';
 
 interface AuthFlowProps {
   authRepository: AuthRepository;

@@ -17,6 +17,7 @@ export default {
       supportsTablet: true,
     },
     android: {
+      softwareKeyboardLayoutMode: 'pan',
       config: {
         googleMaps: {
           apiKey: process.env.MAPS_API_KEY,

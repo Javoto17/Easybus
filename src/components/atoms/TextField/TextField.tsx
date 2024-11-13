@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TextInputProps } from 'react-native';
+import React, { useRef, useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TextInputProps,
+  TouchableOpacity,
+} from 'react-native';
 
 import { tv } from '@/styles/tv';
 
@@ -8,6 +14,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 interface TextFieldProps extends TextInputProps {
   label?: string;
   type: 'search' | 'text';
+  onPressSubmit: () => void;
 }
 
 const inputContainer = tv({
@@ -15,7 +22,7 @@ const inputContainer = tv({
   variants: {
     type: {
       text: '',
-      search: 'pr-5',
+      search: 'pr-2',
     },
     focus: {
       true: 'border-active',
@@ -37,9 +44,11 @@ const TextField: React.FC<TextFieldProps> = ({
   label,
   placeholder,
   type = 'text',
+  onPressSubmit,
   ...props
 }) => {
   const [isFocus, setFocus] = useState(false);
+  const ref = useRef<TextInput>(null);
 
   return (
     <View className="flex flex-col">
@@ -47,6 +56,7 @@ const TextField: React.FC<TextFieldProps> = ({
       <View className={inputContainer({ type, focus: isFocus })}>
         <TextInput
           {...props}
+          ref={ref}
           onFocus={(e) => {
             setFocus(true);
 
@@ -66,7 +76,16 @@ const TextField: React.FC<TextFieldProps> = ({
             type,
           })}
         />
-        {type === 'search' && <FontAwesome5 name="search" size={18} />}
+        {type === 'search' && (
+          <TouchableOpacity
+            className="rounded-full bg-active p-3"
+            onPress={() => {
+              typeof onPressSubmit === 'function' && onPressSubmit();
+            }}
+          >
+            <FontAwesome5 name="search" size={16} color="white" />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

@@ -11,12 +11,17 @@ interface LayoutProps {
 }
 
 const layoutStyle = tv({
-  base: 'flex-1 bg-primary pt-[--safe-top]',
+  base: 'flex flex-1 bg-primary',
   variants: {
     header: {
+      false: 'pt-[--safe-top]',
       true: 'pt-0',
     },
   },
+});
+
+const wrapperStyle = tv({
+  base: 'flex flex-1 bg-primary',
 });
 
 const Layout: React.FC<LayoutProps> = ({
@@ -27,11 +32,15 @@ const Layout: React.FC<LayoutProps> = ({
   const insets = useSafeAreaInsets();
 
   return (
-    <View className="flex flex-1" style={vars({ '--safe-top': insets?.top })}>
+    <View
+      style={vars({ '--safe-top': insets?.top })}
+      className={layoutStyle({
+        header: withHeader,
+      })}
+    >
       <View
-        className={layoutStyle({
+        className={wrapperStyle({
           class: className,
-          header: withHeader,
         })}
       >
         {children}

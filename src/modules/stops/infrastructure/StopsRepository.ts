@@ -24,6 +24,15 @@ export function generateStopRepository(
   storageRepository: StorageRepository
 ): StopRepository {
   return {
+    getStopsFavorites: async () => {
+      try {
+        const stops = (await storageRepository.get<Stop[]>('stops')) ?? [];
+
+        return stops;
+      } catch (error) {
+        return [];
+      }
+    },
     getStopIsFavorite: async (stopId: string): Promise<boolean> => {
       try {
         const stops = (await storageRepository.get<Stop[]>('stops')) ?? [];
@@ -67,8 +76,6 @@ export function generateStopRepository(
           process.env.EXPO_PUBLIC_EMT_API_URL +
             `/transport/busemtmad/stops/${stopId}/detail/`
         );
-
-        console.log(res);
 
         const data = res?.data?.[0]?.stops?.[0];
 

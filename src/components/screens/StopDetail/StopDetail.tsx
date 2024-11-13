@@ -41,6 +41,7 @@ const favoriteButton = tv({
     },
   },
 });
+
 export const StopDetailHeaderRight: React.FC<StopDetailHeaderRightProps> = ({
   onPressRefresh,
   onPressFavorite,

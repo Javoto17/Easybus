@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import React, { Suspense, useCallback, useEffect } from 'react';
 
+import ErrorScreen from '@/components/screens/ErrorScreen';
 import StopDetail, {
   StopDetailHeaderRight,
 } from '@/components/screens/StopDetail/StopDetail';
@@ -10,10 +11,9 @@ import { deleteFavorite } from '@/modules/stops/application/favorites/deleteFavo
 import { getStopIsFavorite } from '@/modules/stops/application/favorites/getStopIsFavorite';
 import { saveFavorite } from '@/modules/stops/application/favorites/saveFavorite';
 import { Stop } from '@/modules/stops/domain/Stop';
-import { generateStopRepository } from '@/modules/stops/infraestructure/StopsRepository';
-import { generateStorageRepository } from '@/modules/storage/infraestructure/StorageRepository';
+import { generateStopRepository } from '@/modules/stops/infrastructure/StopsRepository';
+import { generateStorageRepository } from '@/modules/storage/infrastructure/StorageRepository';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import ErrorScreen from '@/components/screens/ErrorScreen';
 
 const storageRepository = generateStorageRepository();
 const clientRepository = generateClientRepository(storageRepository);
@@ -54,6 +54,9 @@ const StopDetailScreen = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [`${local?.id}-favorite`],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [`stops`],
       });
     },
   });

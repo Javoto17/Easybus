@@ -12,9 +12,10 @@ import {
 } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const queryClient = new QueryClient({});
-
 import '../styles/global.css';
+import { View } from 'react-native';
+
+const queryClient = new QueryClient({});
 
 function RootLayout() {
   useReactQueryDevTools(queryClient);
@@ -24,7 +25,9 @@ function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <QueryClientProvider client={queryClient}>
-        <Slot />
+        <View className="flex flex-1 bg-primary">
+          <Slot />
+        </View>
       </QueryClientProvider>
     </ThemeProvider>
   );
