@@ -14,7 +14,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 interface TextFieldProps extends TextInputProps {
   label?: string;
   type: 'search' | 'text';
-  onPressSubmit: () => void;
+  onPressSubmit?: () => void;
 }
 
 const inputContainer = tv({

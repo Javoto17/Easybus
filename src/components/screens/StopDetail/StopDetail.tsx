@@ -1,4 +1,4 @@
-import React, { Suspense, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import MapView, {
   LatLng,
@@ -7,16 +7,15 @@ import MapView, {
   PROVIDER_GOOGLE,
   Region,
 } from 'react-native-maps';
-
 import AvatarLine from '@/components/atoms/AvatarLine/AvatarLine';
 import { ContentStop } from '@/components/molecules/ContentStop/ContentStop/ContentStop';
 import IconButton from '@/components/molecules/IconButton/IconButton';
 import ParallaxScrollView from '@/components/molecules/ParallaxScrollView/ParallaxScrollView';
-import StopLineRow, {
-  StopLineRowSkeleton,
-} from '@/components/molecules/StopLineRow/StopLineRow';
+import StopLineRow from '@/components/molecules/StopLineRow/StopLineRow';
 import Layout from '@/components/organisms/Layout/Layout';
 import { Stop } from '@/modules/stops/domain/Stop';
+
+import StopModal from '@/components/organisms/StopModal/StopModal';
 
 import { tv } from '@/styles/tv';
 
@@ -47,6 +46,8 @@ export const StopDetailHeaderRight: React.FC<StopDetailHeaderRightProps> = ({
   onPressFavorite,
   isFavorite = false,
 }) => {
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
   return (
     <View className="flex flex-row items-center gap-x-4">
       <View>
@@ -73,7 +74,7 @@ export const StopDetailHeaderRight: React.FC<StopDetailHeaderRightProps> = ({
   );
 };
 
-const StopDetail: React.FC<StopDetailProps> = ({ stop }) => {
+const StopDetail: React.FC<StopDetailProps> = ({ stop, modalVisible }) => {
   const [region, latLng]: [Region | null, LatLng | null] = useMemo(() => {
     if (!stop?.geometry) {
       return [null, null];

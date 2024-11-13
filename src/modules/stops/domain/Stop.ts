@@ -10,6 +10,7 @@ export type Stop = {
   arrives?: Array<StopArrival>;
   isFavorite?: boolean;
   postalAddress: string;
+  customName?: string;
 };
 
 export const stopIsFavorite = (stop: Stop) => {

@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useNavigation } from 'expo-router';
-import React, { Suspense, useCallback, useEffect } from 'react';
+import React, { Suspense, useCallback, useEffect, useState } from 'react';
 
 import ErrorScreen from '@/components/screens/ErrorScreen';
 import StopDetail, {
@@ -14,6 +14,7 @@ import { Stop } from '@/modules/stops/domain/Stop';
 import { generateStopRepository } from '@/modules/stops/infrastructure/StopsRepository';
 import { generateStorageRepository } from '@/modules/storage/infrastructure/StorageRepository';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import StopModal from '@/components/organisms/StopModal/StopModal';
 
 const storageRepository = generateStorageRepository();
 const clientRepository = generateClientRepository(storageRepository);
@@ -23,6 +24,7 @@ const stopRepository = generateStopRepository(
 );
 
 const StopDetailScreen = () => {
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
   const local = useLocalSearchParams<{ id: string }>();
 
   const queryClient = useQueryClient();
@@ -45,11 +47,29 @@ const StopDetailScreen = () => {
     enabled: !!local?.id,
   });
 
-  const toggleFavorite = useMutation({
-    mutationFn: (isFavorite: boolean) => {
-      return isFavorite
-        ? deleteFavorite(stopRepository)(data?.stop as string)
-        : saveFavorite(stopRepository)(data as Stop);
+  const deleteFavoriteMutation = useMutation({
+    mutationFn: () => {
+      return deleteFavorite(stopRepository)(data?.stop as string);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [`${local?.id}-favorite`],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [`stops`],
+      });
+    },
+  });
+
+  const saveFavoriteMutation = useMutation({
+    mutationFn: (name: string) => {
+      let stop = data as Stop;
+
+      if (name) {
+        stop.customName = name;
+      }
+
+      return saveFavorite(stopRepository)(stop);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -78,8 +98,24 @@ const StopDetailScreen = () => {
     });
   }, []);
 
+  const handlePressConfirm = (value: string | undefined) => {
+    saveFavoriteMutation.mutate(value);
+    setModalVisible(false);
+  };
+
+  const handlePressCancel = () => {
+    setModalVisible(false);
+  };
+
   const onPressFavorite = () => {
-    toggleFavorite.mutate(isFavorite as boolean);
+    // toggleFavorite.mutate(isFavorite as boolean);
+    if (isFavorite) {
+      deleteFavoriteMutation.mutate();
+
+      return;
+    }
+
+    setModalVisible(true);
   };
 
   useEffect(() => {
@@ -103,12 +139,20 @@ const StopDetailScreen = () => {
   }
 
   return (
-    <StopDetail
-      stop={data as Stop}
-      isError={isErrorStop}
-      isLoading={isLoadingStop}
-      isReady={isSuccessStop}
-    />
+    <>
+      <StopDetail
+        stop={data as Stop}
+        isError={isErrorStop}
+        isLoading={isLoadingStop}
+        isReady={isSuccessStop}
+      />
+
+      <StopModal
+        visible={modalVisible}
+        onPressConfirm={handlePressConfirm}
+        onPressCancel={handlePressCancel}
+      />
+    </>
   );
 };
 

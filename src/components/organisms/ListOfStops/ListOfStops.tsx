@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 
-import { Stop } from '@/modules/stops/domain/Stop';
 import StopItem from '@/components/molecules/StopItem/StopItem';
+
+import { Stop } from '@/modules/stops/domain/Stop';
 
 interface ListOfStops {
   data: Stop[];
@@ -20,7 +21,7 @@ const ListOfStops = ({
   const renderItem = ({ item }: { item: Stop }) => {
     return (
       <StopItem
-        name={item.name}
+        name={item?.customName ?? item.name}
         code={item.stop}
         isFavorite={item.isFavorite}
         onPressFavorite={() => onPressFavorite(item.stop)}

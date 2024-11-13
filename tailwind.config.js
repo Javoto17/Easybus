@@ -129,6 +129,7 @@ module.exports = withTV({
         secondary: '#2E2E2E',
         card: '#2E2E2E',
         input: '#2E2E2E',
+        backdrop: 'rgba(0, 0, 0, 0.5)',
       },
       textColor: {
         primary: '#FFFFFF',
