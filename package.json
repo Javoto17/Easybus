@@ -26,7 +26,6 @@
     "@tailwindcss/postcss": "^4.1.12",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-devtools": "^5.58.0",
-    "clsx": "^2.1.1",
     "eslint-config-expo": "~55.0.0",
     "expo": "^55.0.9",
     "expo-constants": "~55.0.9",
