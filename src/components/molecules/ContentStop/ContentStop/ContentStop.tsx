@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import ContentLoader, { Rect } from 'react-content-loader/native';
-import { View, Text, useWindowDimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
+import { Text, View } from '@/tw';
 
 interface ContentStopProps {
   children: React.ReactNode;

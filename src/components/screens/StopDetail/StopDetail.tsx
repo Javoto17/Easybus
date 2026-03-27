@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import MapView, {
   LatLng,
   Marker,
@@ -18,6 +18,7 @@ import { Stop } from '@/modules/stops/domain/Stop';
 import StopModal from '@/components/organisms/StopModal/StopModal';
 
 import { tv } from '@/styles/tv';
+import { Text, View } from '@/tw';
 
 interface StopDetailProps {
   stop: Stop;

@@ -1,7 +1,7 @@
 import { vars } from 'nativewind';
 import React from 'react';
-import { Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Text, View } from '@/tw';
 
 import IconButton from '@/components/molecules/IconButton/IconButton';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';

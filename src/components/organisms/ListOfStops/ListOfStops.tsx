@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View } from '@/tw';
 
 import StopItem from '@/components/molecules/StopItem/StopItem';
 

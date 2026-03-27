@@ -1,11 +1,12 @@
-import { cssInterop } from 'nativewind';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useCssElement } from 'react-native-css';
 
-const AntIcon = cssInterop(
-  ({ style, ...props }: any) => <AntDesign {...props} style={style} />,
-  {
+const AntIcon = (
+  props: React.ComponentProps<typeof AntDesign> & { className?: string }
+) => {
+  return useCssElement(AntDesign, props, {
     className: 'style',
-  }
-);
+  });
+};
 
 export default AntIcon;

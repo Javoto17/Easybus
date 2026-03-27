@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from '@/tw';
 
 import AvatarLine from '@/components/atoms/AvatarLine/AvatarLine';
 import { tv } from '@/styles/tv';

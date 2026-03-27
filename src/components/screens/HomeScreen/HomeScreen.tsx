@@ -2,10 +2,9 @@ import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
   NativeSyntheticEvent,
-  Text,
   TextInputSubmitEditingEventData,
-  View,
 } from 'react-native';
+import { Text, View } from '@/tw';
 
 import MaterialIcon from '@/components/atoms/MaterialIcon/MaterialIcon';
 import TextField from '@/components/atoms/TextField/TextField';

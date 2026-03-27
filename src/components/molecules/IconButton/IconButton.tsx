@@ -1,12 +1,13 @@
-import React, { forwardRef } from 'react';
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 import { tv } from '@/styles/tv';
+import { TouchableOpacity } from '@/tw';
 
 import AntIcon from '@/components/atoms/AntIcon/AntIcon';
 
 interface IconButtonProps extends TouchableOpacityProps {
   className?: string;
-  name: string;
+  name: React.ComponentProps<typeof AntIcon>['name'];
   size: number;
   variant?: 'primary';
 }
@@ -23,25 +24,29 @@ const iconButtonTv = tv({
   variants: {},
 });
 
-const IconButton = forwardRef<TouchableOpacity, IconButtonProps>(
-  ({ className, name, onPress, size, variant, ...props }, ref) => {
-    return (
-      <TouchableOpacity
-        {...props}
-        onPress={onPress}
-        className={iconTouchableTv({ variant })}
-        ref={ref}
-      >
-        <AntIcon
-          className={iconButtonTv({
-            class: className,
-          })}
-          size={size}
-          name={name}
-        />
-      </TouchableOpacity>
-    );
-  }
-);
+const IconButton = ({
+  className,
+  name,
+  onPress,
+  size,
+  variant,
+  ...props
+}: IconButtonProps) => {
+  return (
+    <TouchableOpacity
+      {...props}
+      onPress={onPress}
+      className={iconTouchableTv({ variant })}
+    >
+      <AntIcon
+        className={iconButtonTv({
+          class: className,
+        })}
+        size={size}
+        name={name}
+      />
+    </TouchableOpacity>
+  );
+};
 
 export default IconButton;

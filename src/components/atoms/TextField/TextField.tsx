@@ -1,13 +1,8 @@
-import React, { useRef, useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TextInputProps,
-  TouchableOpacity,
-} from 'react-native';
+import React, { useState } from 'react';
+import { TextInputProps } from 'react-native';
 
 import { tv } from '@/styles/tv';
+import { Text, TextInput, TouchableOpacity, View } from '@/tw';
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
@@ -48,7 +43,6 @@ const TextField: React.FC<TextFieldProps> = ({
   ...props
 }) => {
   const [isFocus, setFocus] = useState(false);
-  const ref = useRef<TextInput>(null);
 
   return (
     <View className="flex flex-col">
@@ -56,7 +50,6 @@ const TextField: React.FC<TextFieldProps> = ({
       <View className={inputContainer({ type, focus: isFocus })}>
         <TextInput
           {...props}
-          ref={ref}
           onFocus={(e) => {
             setFocus(true);
 

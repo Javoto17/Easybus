@@ -1,6 +1,6 @@
 import React from 'react';
 import ContentLoader, { Circle, Rect } from 'react-content-loader/native';
-import { Text, useWindowDimensions, View } from 'react-native';
+import { Text, View } from '@/tw';
 
 import AvatarLine from '@/components/atoms/AvatarLine/AvatarLine';
 import { formatDistance } from '@/shared/utils/Distance';

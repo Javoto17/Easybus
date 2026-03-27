@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
 
 import Layout from '@/components/organisms/Layout/Layout';
+import { Text } from '@/tw';
 
 const ErrorScreen = () => {
   return (

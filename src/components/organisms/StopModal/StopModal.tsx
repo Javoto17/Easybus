@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native';
+import { Text, TouchableOpacity, View } from '@/tw';
 
 import TextField from '@/components/atoms/TextField/TextField';
 import Modal from '@/components/molecules/Modal/Modal';

@@ -1,8 +1,8 @@
 import { vars } from 'nativewind';
 import React from 'react';
-import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { tv } from '@/styles/tv';
+import { View } from '@/tw';
 
 interface LayoutProps {
   children: React.ReactNode;

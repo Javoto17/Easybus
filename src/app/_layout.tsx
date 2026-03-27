@@ -4,22 +4,19 @@ import Constants from 'expo-constants';
 import { Slot } from 'expo-router';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { useReactQueryDevTools } from '@dev-plugins/react-query';
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { View } from '@/tw';
 
 import '../styles/global.css';
-import { View } from 'react-native';
 
 const queryClient = new QueryClient({});
 
 function RootLayout() {
-  useReactQueryDevTools(queryClient);
-
   const colorScheme = useColorScheme();
 
   return (
@@ -35,7 +32,7 @@ function RootLayout() {
 
 let AppEntryPoint = RootLayout;
 
-if (Constants.expoConfig.extra.storybookEnabled === 'true') {
+if (Constants.expoConfig?.extra?.storybookEnabled === 'true') {
   AppEntryPoint = require('./../../.storybook').default;
 }
 

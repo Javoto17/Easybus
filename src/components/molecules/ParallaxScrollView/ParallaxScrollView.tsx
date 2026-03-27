@@ -1,6 +1,7 @@
 import { PropsWithChildren, ReactElement } from 'react';
-import { useWindowDimensions, View } from 'react-native';
-import Animated, {
+import { View } from '@/tw';
+import { Animated } from '@/tw/animated';
+import {
   interpolate,
   useAnimatedRef,
   useAnimatedStyle,

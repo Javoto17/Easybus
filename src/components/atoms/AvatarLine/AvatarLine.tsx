@@ -1,7 +1,7 @@
-import { View, Text } from 'react-native';
 import React from 'react';
 
 import { tv } from '@/styles/tv';
+import { Text, View } from '@/tw';
 
 interface AvatarLineProps {
   children: string;
