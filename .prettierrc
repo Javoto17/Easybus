@@ -9,6 +9,24 @@
   "jsxBracketSameLine": false,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindFunctions": ["tv"]
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+  "tailwindFunctions": ["tv"],
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@/app/",
+    "^@/assets/",
+    "^@/components/",
+    "^@/constants/",
+    "^@/hooks/",
+    "^@/modules/",
+    "^@/shared/",
+    "^@/styles/",
+    "^@/tw/",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

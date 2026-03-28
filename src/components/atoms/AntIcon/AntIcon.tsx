@@ -1,12 +1,6 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { useCssElement } from 'react-native-css';
+import { withUniwind } from 'uniwind';
 
-const AntIcon = (
-  props: React.ComponentProps<typeof AntDesign> & { className?: string }
-) => {
-  return useCssElement(AntDesign, props, {
-    className: 'style',
-  });
-};
+const AntIcon = withUniwind(AntDesign);
 
 export default AntIcon;

@@ -25,3 +25,7 @@ web-build/
 
 expo-env.d.ts
 # @end expo-cli
+
+.features/
+.reviews/
+.issues/

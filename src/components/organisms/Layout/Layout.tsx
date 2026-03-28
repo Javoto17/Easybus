@@ -1,8 +1,8 @@
-import { vars } from 'nativewind';
 import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { tv } from '@/styles/tv';
 import { View } from '@/tw';
+import { useCSSVariable } from 'uniwind';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ const layoutStyle = tv({
   base: 'flex flex-1 bg-primary',
   variants: {
     header: {
-      false: 'pt-[--safe-top]',
+      false: '',
       true: 'pt-0',
     },
   },
@@ -30,10 +30,11 @@ const Layout: React.FC<LayoutProps> = ({
   withHeader = false,
 }) => {
   const insets = useSafeAreaInsets();
+  const safeTopValue = useCSSVariable('--safe-top') ?? insets.top;
 
   return (
     <View
-      style={vars({ '--safe-top': insets?.top })}
+      style={{ paddingTop: withHeader ? 0 : safeTopValue }}
       className={layoutStyle({
         header: withHeader,
       })}

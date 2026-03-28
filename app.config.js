@@ -51,7 +51,6 @@ export default {
       typedRoutes: true,
     },
     extra: {
-      storybookEnabled: process.env.STORYBOOK_ENABLED,
       router: {
         origin: false,
       },

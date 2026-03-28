@@ -1,7 +1,7 @@
-import { vars } from 'nativewind';
 import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Text, View } from '@/tw';
+import { useCSSVariable } from 'uniwind';
 
 import IconButton from '@/components/molecules/IconButton/IconButton';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
@@ -13,11 +13,12 @@ const Header: React.FC<HeaderProps> = (props) => {
   const { headerRight, title } = options ?? {};
 
   const insets = useSafeAreaInsets();
+  const safeTopValue = useCSSVariable('--safe-top') ?? insets.top;
 
   return (
     <View
-      className="bg-primary pt-[--safe-top]"
-      style={vars({ '--safe-top': insets?.top })}
+      className="bg-primary"
+      style={{ paddingTop: safeTopValue }}
     >
       <View className="mx-4 my-1 flex h-16 flex-row gap-x-1">
         <View className="basis-2/12 items-start justify-center">

@@ -36,10 +36,25 @@
       "sourceType": "github",
       "computedHash": "d39e806942fe880347f161056729b588a3cb0f1796270eebf52633fe11cfdce1"
     },
+    "heroui-native": {
+      "source": "heroui-inc/heroui",
+      "sourceType": "github",
+      "computedHash": "f677f5246f10d5a754e2b45fda92e4edd4a7121ec7b568f316d352e5dce2fd13"
+    },
+    "migrate-nativewind-to-uniwind": {
+      "source": "uni-stack/uniwind",
+      "sourceType": "github",
+      "computedHash": "eab5d13811440639772e87c342e66ce796c88fb33e12e41849ab1a500aea6c90"
+    },
     "native-data-fetching": {
       "source": "expo/skills",
       "sourceType": "github",
       "computedHash": "3cd0ba91f359f9f84cd40f36f356287994a0e952520fac6e03ef7952d0397879"
+    },
+    "uniwind": {
+      "source": "uni-stack/uniwind",
+      "sourceType": "github",
+      "computedHash": "b10890f7e7cf4c4a683d9cb84df1b02e1d0b4cd7670ffc8369ee5a5740083e49"
     },
     "upgrading-expo": {
       "source": "expo/skills",
