@@ -1,0 +1,23 @@
+{
+  "skill_name": "emt-api-documentation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Implementa la funcionalidad de login con la API de EMT en una app Expo + TypeScript. Necesito el flujo completo: obtener accessToken con X-ClientId y passKey, guardarlo de forma segura, validar sesión con whoami y hacer logout. Dame el código base del cliente, funciones TS y manejo de errores.",
+      "expected_output": "Implementación técnica del flujo de autenticación EMT con funciones TypeScript, uso de accessToken, validación de sesión y logout.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Implementa la funcionalidad para obtener información de una parada (stop) de EMT. Quiero que primero determines el endpoint correcto usando el flujo discover/categories -> discover/collections -> discover/collection y luego me des una función TS que reciba stopId y devuelva la info normalizada de la parada.",
+      "expected_output": "Implementación basada en endpoint real de EMT para obtener detalle de una parada, incluyendo descubrimiento de endpoint y función TypeScript normalizada.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Implementa la funcionalidad de tiempos de llegada en parada para EMT en React Query. Necesito una query hook (useStopArrivals), manejo de refresco cada 30s, control de token expirado y fallback cuando la API falle. Incluye tipado de respuesta y adaptación al sobre code/description/datetime/data.",
+      "expected_output": "Código de integración con React Query para tiempos de llegada por parada EMT, con tipado TS, polling, gestión de errores y token expirado.",
+      "files": []
+    }
+  ]
+}

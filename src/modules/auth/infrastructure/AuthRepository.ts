@@ -1,7 +1,8 @@
 import { ClientRepository } from '@/modules/client/domain/ClientRepository';
+import { StorageRepository } from '@/modules/storage/domain/StorageRepository';
+
 import { Auth } from '../domain/Auth';
 import { AuthRepository } from '../domain/AuthRepository';
-import { StorageRepository } from '@/modules/storage/domain/StorageRepository';
 
 const API_URL = process.env.EXPO_PUBLIC_EMT_API_URL;
 
@@ -15,6 +16,20 @@ interface LoginResponse {
   description: string;
   datetime: string;
   data: Auth[];
+}
+
+interface WhoamiResponse {
+  code: string;
+  description: string;
+  datetime: string;
+  data: Auth[];
+}
+
+interface LogoutResponse {
+  code: string;
+  description: string;
+  datetime: string;
+  data: unknown[];
 }
 
 export function generateAuthRepository(
@@ -46,17 +61,76 @@ export function generateAuthRepository(
 
         const data = res?.data?.[0];
 
+        if (!data?.accessToken) {
+          return false;
+        }
+
         let dateTokenExpiration = new Date();
 
         dateTokenExpiration.setSeconds(
           dateTokenExpiration.getSeconds() + Number(data?.tokenSecExpiration)
         );
 
-        storageRepository.set('auth', data?.accessToken);
-        storageRepository.set('tokenSecExpiration', dateTokenExpiration);
+        await storageRepository.set('auth', data?.accessToken);
+        await storageRepository.set(
+          'tokenSecExpiration',
+          dateTokenExpiration.toISOString()
+        );
+
+        return true;
       }
 
-      return !!auth;
+      return true;
+    },
+    logout: async (): Promise<boolean> => {
+      const auth = await storageRepository.get<string>('auth');
+
+      if (!auth) {
+        return true;
+      }
+
+      try {
+        await clientRepository.get<LogoutResponse>(
+          API_URL + `/mobilitylabs/user/logout/`,
+          {
+            headers: {
+              accessToken: auth,
+            },
+          }
+        );
+      } catch (error) {
+        console.error('Error during logout:', error);
+      } finally {
+        await storageRepository.delete('auth');
+        await storageRepository.delete('tokenSecExpiration');
+      }
+
+      return true;
+    },
+    validateToken: async (): Promise<boolean> => {
+      const auth = await storageRepository.get<string>('auth');
+
+      if (!auth) {
+        return false;
+      }
+
+      try {
+        const res = await clientRepository.get<WhoamiResponse>(
+          API_URL + `/mobilitylabs/user/whoami/`,
+          {
+            headers: {
+              accessToken: auth,
+            },
+          }
+        );
+
+        return res.code === '02' || res.code === '00';
+      } catch (error) {
+        return false;
+      }
+    },
+    getToken: async (): Promise<string | null> => {
+      return storageRepository.get<string>('auth');
     },
   };
 }

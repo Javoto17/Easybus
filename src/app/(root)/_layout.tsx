@@ -1,4 +1,3 @@
-import AuthFlow from '@/components/screens/AuthFlow/AuthFlow';
 import { generateAuthRepository } from '@/modules/auth/infrastructure/AuthRepository';
 import { generateClientRepository } from '@/modules/client/infrastructure/ClientRepository';
 import { generateStorageRepository } from '@/modules/storage/infrastructure/StorageRepository';
@@ -11,5 +10,5 @@ const authRepository = generateAuthRepository(
 );
 
 export default function AppLayout() {
-  return <AuthFlow authRepository={authRepository} />;
+  return null;
 }

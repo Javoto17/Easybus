@@ -51,6 +51,16 @@
       "sourceType": "github",
       "computedHash": "3cd0ba91f359f9f84cd40f36f356287994a0e952520fac6e03ef7952d0397879"
     },
+    "reanimated-skia-performance": {
+      "source": "andreev-danila/skills",
+      "sourceType": "github",
+      "computedHash": "14ab8be93ebb822d4f9c6ebdce0204f0b5e3837b15b43cdb061a06973751364e"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "b122f4d1e91aa1d83027e050b5b37c3156203ee85458d7b1360bc48167c9e02a"
+    },
     "uniwind": {
       "source": "uni-stack/uniwind",
       "sourceType": "github",

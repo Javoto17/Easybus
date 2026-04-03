@@ -1,7 +1,28 @@
 import type { Preview } from '@storybook/react';
 import { HeroUINativeProvider } from 'heroui-native';
+import { type PropsWithChildren, useEffect } from 'react';
 import { Appearance, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Uniwind } from 'uniwind';
+
+const ThemeSyncDecorator = ({ children }: PropsWithChildren) => {
+  useEffect(() => {
+    const applyTheme = () => {
+      Uniwind.setTheme(
+        Appearance.getColorScheme() === 'dark' ? 'dark' : 'light'
+      );
+    };
+
+    applyTheme();
+    const subscription = Appearance.addChangeListener(applyTheme);
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+  return <>{children}</>;
+};
 
 const preview: Preview = {
   parameters: {
@@ -57,13 +78,15 @@ const preview: Preview = {
     (Story) => {
       return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-          <HeroUINativeProvider
-            config={{ devInfo: { stylingPrinciples: false } }}
-          >
-            <View style={{ flex: 1 }}>
-              <Story />
-            </View>
-          </HeroUINativeProvider>
+          <ThemeSyncDecorator>
+            <HeroUINativeProvider
+              config={{ devInfo: { stylingPrinciples: false } }}
+            >
+              <View style={{ flex: 1 }}>
+                <Story />
+              </View>
+            </HeroUINativeProvider>
+          </ThemeSyncDecorator>
         </GestureHandlerRootView>
       );
     },

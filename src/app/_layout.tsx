@@ -8,9 +8,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Slot } from 'expo-router';
 import { HeroUINativeProviderRaw } from 'heroui-native/provider-raw';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { AppTheme, useAppTheme } from '@/hooks/useAppTheme';
 
 import StorybookUIRoot from '../../.rnstorybook';
 import '../../global.css';
@@ -18,16 +17,14 @@ import '../../global.css';
 const queryClient = new QueryClient({});
 
 function RootLayout() {
-  const colorScheme = useColorScheme();
+  const { theme, themeValue } = useAppTheme();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <HeroUINativeProviderRaw>
-        <ThemeProvider
-          value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-        >
+        <ThemeProvider value={theme === 'dark' ? DarkTheme : DefaultTheme}>
           <QueryClientProvider client={queryClient}>
-            <View className="bg-primary flex flex-1">
+            <View className="flex-1">
               <Slot />
             </View>
           </QueryClientProvider>
