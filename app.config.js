@@ -46,6 +46,7 @@ export default {
           ],
         },
       ],
+      'expo-image',
     ],
     experiments: {
       typedRoutes: true,

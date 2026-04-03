@@ -2,11 +2,20 @@
 
 ## Component Organization
 
+Components are organized by feature:
+
 ```
 src/components/
-├── atoms/          # Basic building blocks (Button, Input, Text)
-├── molecules/      # Combinations of atoms (SearchBar, Card)
-└── [other groups]  # Organize by feature/domain
+├── features/
+│   └── {featureName}/        # e.g., home, auth, stops
+│       └── {ComponentName}/
+│           ├── index.ts                    # Barrel export
+│           ├── ComponentName.tsx           # Component
+│           ├── ComponentName.stories.tsx   # Storybook stories
+│           ├── ComponentName.test.tsx      # Unit tests
+│           └── ComponentName.styles.ts     # Style definitions
+│
+└── shared/                  # Cross-cutting components used by multiple features
 ```
 
 ## Component Structure
