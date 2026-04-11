@@ -1,4 +1,5 @@
 import { Stop } from '@/modules/stops/domain/Stop';
+
 import { StopRepository } from '../../domain/StopRepository';
 
 export const saveFavorite =

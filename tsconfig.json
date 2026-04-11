@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "preserve",
+    "resolveJsonModule": true,
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -13,5 +14,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

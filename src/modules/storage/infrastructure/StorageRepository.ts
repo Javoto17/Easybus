@@ -1,7 +1,8 @@
-const APP_KEY = '@easybus';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { StorageRepository } from '../domain/StorageRepository';
+
+const APP_KEY = '@easybus';
 
 export function generateStorageRepository(): StorageRepository {
   return {

@@ -6,8 +6,8 @@ export type Stop = {
   name: string; // Stop name
   geometry: Geometry; // Geographical position
   stop: string; // Stop ID
-  dataLine: Array<Dataline>;
-  arrives?: Array<StopArrival>;
+  dataLine: Dataline[];
+  arrives?: StopArrival[];
   isFavorite?: boolean;
   postalAddress: string;
   customName?: string;

@@ -1,0 +1,1 @@
+export { FavoritesErrorState } from './FavoritesErrorState';

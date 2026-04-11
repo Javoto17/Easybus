@@ -1,0 +1,1 @@
+export { FavoritesEmptyState } from './FavoritesEmptyState';

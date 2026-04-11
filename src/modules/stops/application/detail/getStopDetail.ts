@@ -1,6 +1,7 @@
 import { StorageRepository } from '@/modules/storage/domain/StorageRepository';
-import { StopRepository } from '../../domain/StopRepository';
+
 import { Stop } from '../../domain/Stop';
+import { StopRepository } from '../../domain/StopRepository';
 
 export const getStopDetail =
   (stopRepository: StopRepository, storageRepository: StorageRepository) =>

@@ -1,0 +1,148 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "nearby": "Cerca",
+    "lines": "Líneas",
+    "favorites": "Favoritos"
+  },
+  "home": {
+    "title": "Easybus",
+    "searchPlaceholder": "Buscar parada o línea...",
+    "subtitle": "Accede rápido a líneas, favoritos y estado en tiempo real.",
+    "brand": "Easybus"
+  },
+  "glossary": {
+    "line": "Línea",
+    "stop": "Parada",
+    "direction": "Dirección",
+    "nextDepartures": "Próximas salidas",
+    "realTime": "Tiempo real",
+    "offline": "Sin conexión"
+  },
+  "search": {
+    "title": "Buscar",
+    "searchingFor": "Buscando “{{query}}”",
+    "loadingResults": "Cargando resultados…",
+    "resultsFor": "Resultados para “{{query}}”",
+    "noResults": "Sin resultados",
+    "noResultsDescription": "Prueba con otro nombre de parada, número de línea o dirección.",
+    "noResultsAction": "Ver líneas disponibles",
+    "noAddressAvailable": "Sin dirección disponible",
+    "favoriteTag": "Favorita",
+    "searching": "Buscando...",
+    "searchingDescription": "Estamos buscando paradas y líneas que coincidan con tu búsqueda."
+  },
+  "stop": {
+    "arrivals": "Llegadas",
+    "noArrivals": "No hay buses en camino",
+    "noArrivalsDescription": "Esta parada no tiene llegadas programadas en los próximos minutos. Puedes refrescar para ver si hay novedades.",
+    "noArrivalsAction": "Refrescar",
+    "errorTitle": "Error al cargar la parada",
+    "errorDescription": "No pudimos obtener la información. Revisa tu conexión e intenta de nuevo.",
+    "distance": "Distancia",
+    "lines": "Líneas",
+    "info": "Información",
+    "detail": "Detalle",
+    "saveFavorite": "Guardar favorito",
+    "saveFavoriteDescription": "Puedes asignar un nombre personalizado a esta parada.",
+    "customNamePlaceholder": "Nombre personalizado (opcional)",
+    "favoriteAdded": "Añadido a favoritos",
+    "favoriteRemoved": "Eliminado de favoritos",
+    "stationEntrance": "Acceso a la parada",
+    "stationInfo": "Información de la parada",
+    "stopId": "ID de parada",
+    "pmvPanel": "Panel PMV",
+    "coordinates": "Coordenadas",
+    "onTime": "En hora",
+    "nextStopApprox": "Próxima parada aproximada",
+    "arrivalBus": "Bus {{id}}",
+    "linesInStop": "Líneas en esta parada",
+    "via": "Vía {{destination}}"
+  },
+  "line": {
+    "stops": "Paradas",
+    "directions": "Direcciones",
+    "noStops": "No hay paradas disponibles",
+    "noDirections": "No hay direcciones disponibles para esta línea",
+    "noDirectionsDescription": "Parece que hay un problema temporal. Intenta refrescar o vuelve más tarde.",
+    "line": "Línea",
+    "activeLine": "Línea activa",
+    "service": "Servicio",
+    "frequency": "Frecuencia",
+    "directionCode": "Dirección {{code}}",
+    "chooseDirection": "Elige dirección",
+    "chooseDirectionDescription": "Selecciona tu sentido de viaje para ver llegadas y paradas en directo.",
+    "etaEstimatedByFrequency": "Próxima salida estimada por frecuencia",
+    "operational": "Operativa",
+    "routeOverview": "Recorrido de la línea",
+    "totalDistance": "{{distance}} km de recorrido total",
+    "alertsTitle": "Avisos de la línea",
+    "noStopsDirection": "No hay paradas disponibles para esta dirección."
+  },
+  "favorites": {
+    "title": "Favoritos",
+    "subtitle": "Accede rápido a tus paradas y rutas más frecuentes.",
+    "empty": "Aún no tienes favoritos",
+    "emptyDescription": "Guarda tus paradas más usadas para acceder a ellas al instante, sin buscar.",
+    "emptyAction": "Explorar paradas cercanas",
+    "loading": "Cargando favoritos...",
+    "error": "No pudimos cargar tus favoritos",
+    "errorDescription": "Parece que hay un problema de conexión. Intenta de nuevo en unos segundos.",
+    "addMore": "¿Te mueves a nuevos destinos? Añade más líneas y paradas a favoritos."
+  },
+  "nearby": {
+    "title": "Cercanas",
+    "currentLocation": "Ubicación actual",
+    "nearbyStops": "Paradas cercanas",
+    "nearbyDescription": "Descubre paradas cercanas y entra a sus tiempos en directo.",
+    "exploreAllLines": "Explorar todas las líneas",
+    "linesAvailable": "líneas disponibles",
+    "updatedRecently": "Actualizado hace menos de 1 min",
+    "currentLocationName": "Glorieta de Atocha",
+    "stops": {
+      "70": "Atocha - Estación",
+      "73": "Paseo del Prado - Neptuno",
+      "75": "Cibeles"
+    }
+  },
+  "lines": {
+    "title": "Líneas",
+    "activeLines": "Líneas activas",
+    "routesAvailable": "líneas disponibles ahora mismo",
+    "loading": "Cargando líneas...",
+    "errorLoading": "Error al cargar líneas",
+    "errorLoadingDescription": "No se pudieron obtener las líneas de la EMT. Intenta de nuevo más tarde.",
+    "nightService": "Expansión de servicio nocturno",
+    "nightServiceDescription": "Las líneas 24 y C1 ya operan 24/7 con frecuencias optimizadas.",
+    "sustainableTransport": "Transporte sostenible",
+    "sustainableTransportDescription": "La flota EMT avanza hacia emisiones cero con más buses eléctricos."
+  },
+  "quickActions": {
+    "nearby": "Cercanas",
+    "favorites": "Favoritos",
+    "lines": "Líneas",
+    "map": "Mapa"
+  },
+  "popular": {
+    "title": "Líneas populares"
+  },
+  "liveStatus": {
+    "title": "Tiempo real",
+    "subtitle": "Actualizaciones en vivo cada 30 s"
+  },
+  "errors": {
+    "network": "Error de conexión",
+    "notFound": "No encontrado",
+    "unknown": "Error desconocido"
+  }
+}

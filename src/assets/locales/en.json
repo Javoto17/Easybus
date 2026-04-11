@@ -1,0 +1,146 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close"
+  },
+  "tabs": {
+    "home": "Home",
+    "nearby": "Nearby",
+    "lines": "Lines",
+    "favorites": "Favorites"
+  },
+  "home": {
+    "title": "Easybus",
+    "searchPlaceholder": "Search stop or line...",
+    "subtitle": "Quick access to lines, favorites and real-time status.",
+    "brand": "Easybus"
+  },
+  "glossary": {
+    "line": "Line",
+    "stop": "Stop",
+    "direction": "Direction",
+    "nextDepartures": "Next departures",
+    "realTime": "Real-time",
+    "offline": "Offline"
+  },
+  "search": {
+    "title": "Search",
+    "searchingFor": "Searching for “{{query}}”",
+    "loadingResults": "Loading results…",
+    "resultsFor": "Results for “{{query}}”",
+    "noResults": "No results",
+    "noResultsDescription": "Try a different stop name, line number, or address.",
+    "noResultsAction": "See available lines",
+    "noAddressAvailable": "No address available",
+    "favoriteTag": "Favorite"
+  },
+  "stop": {
+    "arrivals": "Arrivals",
+    "noArrivals": "No buses incoming",
+    "noArrivalsDescription": "This stop has no arrivals scheduled in the next few minutes. You can refresh to check for updates.",
+    "noArrivalsAction": "Refresh",
+    "distance": "Distance",
+    "lines": "Lines",
+    "info": "Information",
+    "detail": "Detail",
+    "saveFavorite": "Save favorite",
+    "saveFavoriteDescription": "You can assign a custom name to this stop.",
+    "customNamePlaceholder": "Custom name (optional)",
+    "favoriteAdded": "Added to favorites",
+    "favoriteRemoved": "Removed from favorites",
+    "errorTitle": "Error loading stop",
+    "errorDescription": "We couldn't retrieve the information. Check your connection and try again.",
+    "stationEntrance": "Stop access",
+    "stationInfo": "Stop information",
+    "stopId": "Stop ID",
+    "pmvPanel": "PMV panel",
+    "coordinates": "Coordinates",
+    "onTime": "On time",
+    "nextStopApprox": "Approximate next stop",
+    "arrivalBus": "Bus {{id}}",
+    "linesInStop": "Lines at this stop",
+    "via": "Via {{destination}}"
+  },
+  "line": {
+    "stops": "Stops",
+    "directions": "Directions",
+    "noStops": "No stops available",
+    "line": "Line",
+    "activeLine": "Active line",
+    "service": "Service",
+    "frequency": "Frequency",
+    "directionCode": "Direction {{code}}",
+    "chooseDirection": "Choose direction",
+    "chooseDirectionDescription": "Select your travel direction to see arrivals and stops in real-time.",
+    "etaEstimatedByFrequency": "Next departure estimated by frequency",
+    "operational": "Operational",
+    "noDirections": "No directions available for this line",
+    "noDirectionsDescription": "There seems to be a temporary issue. Try refreshing or come back later.",
+    "routeOverview": "Line route",
+    "totalDistance": "{{distance}} km total route",
+    "alertsTitle": "Line alerts",
+    "noStopsDirection": "No stops available for this direction."
+  },
+  "favorites": {
+    "title": "Favorites",
+    "subtitle": "Quick access to your most frequent stops and routes.",
+    "empty": "No favorites yet",
+    "emptyDescription": "Save your most used stops for instant access without searching.",
+    "emptyAction": "Explore nearby stops",
+    "loading": "Loading favorites...",
+    "error": "Couldn't load your favorites",
+    "errorDescription": "There seems to be a connection issue. Try again in a few seconds.",
+    "addMore": "Exploring new destinations? Add more lines and stops to favorites."
+  },
+  "nearby": {
+    "title": "Nearby",
+    "currentLocation": "Current location",
+    "nearbyStops": "Nearby stops",
+    "nearbyDescription": "Discover nearby stops and check their real-time arrival times.",
+    "exploreAllLines": "Explore all lines",
+    "linesAvailable": "lines available",
+    "updatedRecently": "Updated less than 1 min ago",
+    "currentLocationName": "Atocha roundabout",
+    "stops": {
+      "70": "Atocha - Station",
+      "73": "Paseo del Prado - Neptuno",
+      "75": "Cibeles"
+    }
+  },
+  "lines": {
+    "title": "Lines",
+    "activeLines": "Active lines",
+    "routesAvailable": "lines available right now",
+    "loading": "Loading lines...",
+    "errorLoading": "Error loading lines",
+    "errorLoadingDescription": "Could not retrieve EMT lines. Try again later.",
+    "nightService": "Night service expansion",
+    "nightServiceDescription": "Lines 24 and C1 now operate 24/7 with optimized frequencies.",
+    "sustainableTransport": "Sustainable transport",
+    "sustainableTransportDescription": "The EMT fleet is moving towards zero emissions with more electric buses."
+  },
+  "quickActions": {
+    "nearby": "Nearby",
+    "favorites": "Favorites",
+    "lines": "Lines",
+    "map": "Map"
+  },
+  "popular": {
+    "title": "Popular lines"
+  },
+  "liveStatus": {
+    "title": "Real-time",
+    "subtitle": "Live updates every 30s"
+  },
+  "errors": {
+    "network": "Connection error",
+    "notFound": "Not found",
+    "unknown": "Unknown error"
+  }
+}

@@ -1,7 +1,8 @@
 module.exports = {
-  extends: ["expo", "prettier", "plugin:@tanstack/query/recommended"],
-  plugins: ["prettier"],
+  extends: ['expo', 'prettier', 'plugin:@tanstack/query/recommended'],
+  plugins: ['prettier', 'react-compiler'],
   rules: {
-    "prettier/prettier": "error",
+    'prettier/prettier': 'error',
+    'react-compiler/react-compiler': 'error',
   },
 };

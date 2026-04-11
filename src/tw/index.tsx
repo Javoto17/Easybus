@@ -22,5 +22,12 @@ export const Link = Object.assign(LinkComponent, {
 });
 
 // Re-exportar componentes nativos (ya soportan className en Uniwind)
-export { FlatList, Pressable, ScrollView, Text, TextInput, TouchableOpacity, View };
-
+export {
+  FlatList,
+  Pressable,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+};

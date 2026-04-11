@@ -1,9 +1,20 @@
-import { createTV, VariantProps } from 'tailwind-variants';
+import { VariantProps, createTV } from 'tailwind-variants';
 
 export const twMergeConfig = {
   extend: {
     classGroups: {
-      color: [{ text: ['primary'] }],
+      color: [{ text: [] }],
+      size: [
+        {
+          text: [
+            'display-lg',
+            'headline-md',
+            'title-sm',
+            'body-md',
+            'label-sm',
+          ],
+        },
+      ],
     },
   },
 };

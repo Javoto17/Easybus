@@ -1,0 +1,1 @@
+export { FavoritesListSection } from './FavoritesListSection';

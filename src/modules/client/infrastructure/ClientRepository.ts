@@ -1,6 +1,7 @@
-import { StorageRepository } from '@/modules/storage/domain/StorageRepository';
-import { ClientRepository } from '../domain/ClientRepository';
 import { Auth } from '@/modules/auth/domain/Auth';
+import { StorageRepository } from '@/modules/storage/domain/StorageRepository';
+
+import { ClientRepository } from '../domain/ClientRepository';
 
 export const generateClientRepository = (
   storageRepository: StorageRepository
