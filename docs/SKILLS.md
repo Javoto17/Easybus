@@ -21,5 +21,6 @@ This project includes Windsurf skills for specific tasks. Invoke them when neede
 ## Location
 
 Skills are located in:
-- `.windsurf/skills/`
 - `.agents/skills/`
+- `.claude/skills/`
+

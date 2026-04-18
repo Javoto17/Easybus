@@ -27,3 +27,4 @@ For detailed conventions, see:
 - **Components**: [docs/COMPONENTS.md](./docs/COMPONENTS.md)
 - **Project Structure**: [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)
 - **Available Skills**: [docs/SKILLS.md](./docs/SKILLS.md)
+- **Design System**: [docs/DESIGN.md](./docs/DESIGN.md)
