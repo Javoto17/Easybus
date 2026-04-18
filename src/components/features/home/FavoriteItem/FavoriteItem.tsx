@@ -1,10 +1,10 @@
 import { Link } from 'expo-router';
 import { Card } from 'heroui-native';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 
-import { Icon, Typography } from '@/components/shared';
+import { Icon, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import type { Stop } from '@/modules/stops/domain/Stop';
 
@@ -23,8 +23,8 @@ export const FavoriteItem = React.memo(({ stop, index }: FavoriteItemProps) => (
               <View className="flex-1">
                 {stop.customName && (
                   <Typography
-                    variant="label-sm"
-                    tone="primary"
+                    variant={TypographyVariant.LabelSm}
+                    tone={TypographyTone.Primary}
                     className="normal-case mb-1"
                   >
                     {stop.customName}
@@ -33,9 +33,9 @@ export const FavoriteItem = React.memo(({ stop, index }: FavoriteItemProps) => (
                 <Card.Title className="text-base text-on-surface mb-1">
                   {stop.name}
                 </Card.Title>
-                <Text className="text-xs text-on-surface-variant mb-3">
+                <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mb-3">
                   {stop.postalAddress}
-                </Text>
+                </Typography>
                 {stop.dataLine && stop.dataLine.length > 0 && (
                   <View className="flex-row flex-wrap gap-2">
                     {stop.dataLine.slice(0, 4).map((line) => (
@@ -44,8 +44,8 @@ export const FavoriteItem = React.memo(({ stop, index }: FavoriteItemProps) => (
                         className="px-2.5 py-1 rounded-lg bg-secondary-container"
                       >
                         <Typography
-                          variant="label-sm"
-                          tone="secondary"
+                          variant={TypographyVariant.LabelSm}
+                          tone={TypographyTone.Secondary}
                           className="normal-case"
                         >
                           {line.line}
@@ -53,9 +53,9 @@ export const FavoriteItem = React.memo(({ stop, index }: FavoriteItemProps) => (
                       </View>
                     ))}
                     {stop.dataLine.length > 4 && (
-                      <Text className="text-xs text-on-surface-variant self-center">
+                      <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="self-center">
                         +{stop.dataLine.length - 4}
-                      </Text>
+                      </Typography>
                     )}
                   </View>
                 )}

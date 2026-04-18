@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList, Pressable, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 
-import { IconBadge, type IconName, Typography } from '@/components/shared';
+import { IconBadge, type IconName, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -40,7 +40,7 @@ const QuickActionItem = React.memo(
           shape="rounded"
           size="2xl"
         />
-        <Typography variant="label-sm" tone="muted" className="normal-case">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="normal-case">
           {item.label}
         </Typography>
       </Pressable>

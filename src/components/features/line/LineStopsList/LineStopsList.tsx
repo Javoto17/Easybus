@@ -1,7 +1,7 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -26,7 +26,7 @@ export const LineStopsList = React.memo(
 
     return (
       <View className="px-5 pb-safe-offset-4">
-        <Typography variant="headline-md" className="mb-4">
+        <Typography variant={TypographyVariant.HeadlineMd} className="mb-4">
           {t('line.routeOverview')}
         </Typography>
 
@@ -38,11 +38,11 @@ export const LineStopsList = React.memo(
           ItemSeparatorComponent={() => <View className="h-2" />}
         />
 
-        <Text className="text-xs text-on-surface-variant mt-3">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mt-3">
           {t('line.totalDistance', {
             distance: Math.max(1, Number((stops.length * 0.8).toFixed(1))),
           })}
-        </Text>
+        </Typography>
       </View>
     );
   }

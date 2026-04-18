@@ -1,8 +1,8 @@
 import { Skeleton } from 'heroui-native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import type { LineDetail } from '@/modules/stops/domain/LineDetail';
 
@@ -34,23 +34,23 @@ export const LineHeader = React.memo(({ line, isLoading }: LineHeaderProps) => {
       <View className="flex-row items-center gap-3 mb-3">
         <View className="px-3 py-1.5 rounded-full bg-secondary-container">
           <Typography
-            variant="title-sm"
-            tone="secondary"
+            variant={TypographyVariant.TitleSm}
+            tone={TypographyTone.Secondary}
             className="normal-case"
           >
             {line.line}
           </Typography>
         </View>
-        <Typography variant="label-sm" tone="muted">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted}>
           Línea activa
         </Typography>
       </View>
 
-      <Typography variant="headline-md" className="mb-2">
-        {'hola'}
+      <Typography variant={TypographyVariant.HeadlineMd} className="mb-2">
+        {line.label}
       </Typography>
 
-      <Typography variant="headline-md" tone="muted">
+      <Typography variant={TypographyVariant.HeadlineMd} tone={TypographyTone.Muted}>
         Servicio {line.startTime} - {line.stopTime} · Frecuencia {line.minFreq}{' '}
         a {line.maxFreq} min
       </Typography>

@@ -4,5 +4,5 @@ export { IconBadge } from './IconBadge';
 export type { IconBadgeProps } from './IconBadge';
 export { ScreenLayout } from './ScreenLayout';
 export type { ScreenLayoutProps } from './ScreenLayout';
-export { Typography } from './Typography';
+export { Typography, TypographyVariant, TypographyTone, TypographyFamily } from './Typography';
 export type { TypographyProps } from './Typography';

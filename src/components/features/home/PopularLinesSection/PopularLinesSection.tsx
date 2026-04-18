@@ -4,7 +4,7 @@ import React from 'react';
 import { FlatList, Pressable, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -27,10 +27,10 @@ const PopularLineItem = React.memo(
         <Card className="w-44 bg-surface-container" variant="default">
           <Card.Body className="p-4">
             <View
-              className="w-12 h-12 rounded-xl items-center justify-center mb-3"
+              className="w-12 h-12 rounded-full items-center justify-center mb-3"
               style={{ backgroundColor: item.color }}
             >
-              <Typography variant="title-sm" tone="inverse">
+              <Typography variant={TypographyVariant.TitleSm} tone={TypographyTone.Inverse}>
                 {item.number}
               </Typography>
             </View>
@@ -68,7 +68,7 @@ export const PopularLinesSection = React.memo(() => {
 
   return (
     <View className="mt-6 mb-6">
-      <Typography variant="headline-md" className="px-5 mb-4">
+      <Typography variant={TypographyVariant.HeadlineMd} className="px-5 mb-4">
         {t('popular.title')}
       </Typography>
       <FlatList

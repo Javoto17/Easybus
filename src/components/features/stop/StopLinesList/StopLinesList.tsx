@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -30,7 +30,7 @@ export const StopLinesList = React.memo(
 
     return (
       <View className="px-5 mb-6">
-        <Typography variant="headline-md" className="mb-4">
+        <Typography variant={TypographyVariant.HeadlineMd} className="mb-4">
           {t('stop.linesInStop')}
         </Typography>
 

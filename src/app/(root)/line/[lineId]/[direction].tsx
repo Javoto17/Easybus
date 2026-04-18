@@ -4,11 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import { Button, Card } from 'heroui-native';
 import React, { useCallback, useEffect, useState } from 'react';
-import { RefreshControl, Text, View } from 'react-native';
+import { RefreshControl, View } from 'react-native';
 
 import { LineStopsList } from '@/components/features/line';
 import { StopErrorState } from '@/components/features/stop';
-import { ScreenLayout, Typography } from '@/components/shared';
+import { ScreenLayout, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { generateClientRepository } from '@/modules/client/infrastructure/ClientRepository';
 import { getLineStopsByDirection } from '@/modules/stops/application/line/getLineStopsByDirection';
@@ -137,38 +137,38 @@ const LineDirectionStopsScreen = () => {
               <View className="flex-row items-center justify-between mb-3">
                 <View className="px-2.5 py-1 rounded-full bg-secondary-container">
                   <Typography
-                    variant="label-sm"
-                    tone="secondary"
+                    variant={TypographyVariant.LabelSm}
+                    tone={TypographyTone.Secondary}
                     className="normal-case"
                   >
                     {item.lineLabel}
                   </Typography>
                 </View>
-                <Typography variant="label-sm" tone="tertiary">
+                <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Tertiary}>
                   {t('stop.onTime')}
                 </Typography>
               </View>
 
-              <Typography variant="display-lg">{item.etaLabel}</Typography>
+              <Typography variant={TypographyVariant.DisplayLg}>{item.etaLabel}</Typography>
 
-              <Text className="text-sm text-on-surface-variant mt-1 mb-4">
+              <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-1 mb-4">
                 {t('stop.nextStopApprox')}
-              </Text>
+              </Typography>
 
               <View className="rounded-2xl bg-surface-container-high px-3 py-3">
-                <Typography variant="headline-md">
+                <Typography variant={TypographyVariant.HeadlineMd}>
                   {item.directionName}
                 </Typography>
-                <Text className="text-xs text-on-surface-variant mt-1">
+                <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mt-1">
                   {t('line.routeOverview')}
-                </Text>
+                </Typography>
               </View>
             </Card.Body>
           </Card>
 
-          <Text className="text-sm text-on-surface-variant mt-4">
+          <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-4">
             {t('glossary.nextDepartures')}
-          </Text>
+          </Typography>
         </View>
       );
     }
@@ -180,15 +180,15 @@ const LineDirectionStopsScreen = () => {
     if (item.type === 'empty') {
       return (
         <View className="px-5 py-12 items-center">
-          <View className="w-20 h-20 rounded-2xl bg-surface-container-high items-center justify-center mb-5">
-            <Ionicons name="location-outline" size={32} color="#aaabb0" />
+          <View className="w-20 h-20 rounded-full bg-surface-container-high items-center justify-center mb-5">
+            <Ionicons name="location-outline" size={32} color="#c3c6d3" />
           </View>
-          <Typography variant="headline-md" className="mb-2 text-center">
+          <Typography variant={TypographyVariant.HeadlineMd} className="mb-2 text-center">
             {t('line.noStops')}
           </Typography>
-          <Text className="text-sm text-on-surface-variant text-center max-w-[280px] mb-5">
+          <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="text-center max-w-[280px] mb-5">
             {t('line.noStopsDirection')}
-          </Text>
+          </Typography>
           <Button variant="ghost" size="sm" onPress={onRefresh}>
             <Button.Label>{t('common.retry')}</Button.Label>
           </Button>

@@ -1,8 +1,9 @@
 import { Card } from 'heroui-native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -33,62 +34,61 @@ export const StopArrivalItem = React.memo(
     const isFirst = index === 0;
 
     return (
-      <Card
-        className={
-          isFirst ? 'bg-surface-container-high' : 'bg-surface-container'
-        }
-      >
-        <Card.Body className="p-4">
-          <View className="flex-row items-start justify-between">
-            {/* Left: Line & Destination */}
-            <View className="flex-row items-start gap-3 flex-1">
-              {/* Line Badge */}
-              <View
-                className="w-12 h-12 rounded-xl items-center justify-center"
-                style={{
-                  backgroundColor: isFirst ? '#85adff' : '#384668',
-                }}
-              >
+      <Animated.View entering={FadeInUp.delay(index * 50).duration(300)}>
+        <Card
+          className={
+            isFirst ? 'bg-surface-container-high' : 'bg-surface-container'
+          }
+        >
+          <Card.Body className="p-4">
+            <View className="flex-row items-start justify-between">
+              {/* Left: Line & Destination */}
+              <View className="flex-row items-start gap-3 flex-1">
+                {/* Line Badge */}
+                <View
+                  className={`w-12 h-12 rounded-full items-center justify-center ${isFirst ? 'bg-primary' : 'bg-secondary-container'}`}
+                >
+                  <Typography
+                    variant={TypographyVariant.TitleSm}
+                    style={{
+                      color: isFirst ? '#002c65' : '#c5d4fd',
+                    }}
+                  >
+                    {arrival.line}
+                  </Typography>
+                </View>
+
+                {/* Destination Info */}
+                <View className="flex-1 pt-0.5">
+                  <Typography variant={TypographyVariant.TitleSm} className="mb-0.5">
+                    {arrival.destination}
+                  </Typography>
+                  <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted}>
+                    {t('stop.arrivalBus', { id: arrival.bus })}
+                  </Typography>
+                </View>
+              </View>
+
+              {/* Right: Arrival Time */}
+              <View className="items-end min-w-[80px]">
                 <Typography
-                  variant="title-sm"
+                  variant={TypographyVariant.HeadlineMd}
                   style={{
-                    color: isFirst ? '#002c65' : '#c5d4fd',
+                    color: getStatusColor(arrival.deviation),
                   }}
                 >
-                  {arrival.line}
+                  {formatTime(arrival.estimateArrive)}
                 </Typography>
-              </View>
-
-              {/* Destination Info */}
-              <View className="flex-1 pt-0.5">
-                <Typography variant="title-sm" className="mb-0.5">
-                  {arrival.destination}
-                </Typography>
-                <Text className="text-sm text-on-surface-variant">
-                  {t('stop.arrivalBus', { id: arrival.bus })}
-                </Text>
+                {arrival.deviation > 0 && (
+                  <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Danger} className="mt-0.5">
+                    +{Math.floor(arrival.deviation / 60)} min
+                  </Typography>
+                )}
               </View>
             </View>
-
-            {/* Right: Arrival Time */}
-            <View className="items-end min-w-[80px]">
-              <Typography
-                variant="headline-md"
-                style={{
-                  color: getStatusColor(arrival.deviation),
-                }}
-              >
-                {formatTime(arrival.estimateArrive)}
-              </Typography>
-              {arrival.deviation > 0 && (
-                <Text className="text-xs text-danger mt-0.5">
-                  +{Math.floor(arrival.deviation / 60)} min
-                </Text>
-              )}
-            </View>
-          </View>
-        </Card.Body>
-      </Card>
+          </Card.Body>
+        </Card>
+      </Animated.View>
     );
   }
 );

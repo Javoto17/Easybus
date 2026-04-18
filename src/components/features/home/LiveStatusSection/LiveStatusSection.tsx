@@ -1,10 +1,10 @@
 import { useRouter } from 'expo-router';
 import { Card } from 'heroui-native';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 
-import { IconBadge, Typography } from '@/components/shared';
+import { IconBadge, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -27,12 +27,12 @@ export const LiveStatusSection = React.memo(() => {
                     size="lg"
                   />
                   <View>
-                    <Typography variant="title-sm">
+                    <Typography variant={TypographyVariant.TitleSm}>
                       {t('liveStatus.title')}
                     </Typography>
-                    <Text className="text-sm text-on-surface-variant">
+                    <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted}>
                       {t('liveStatus.subtitle')}
-                    </Text>
+                    </Typography>
                   </View>
                 </View>
                 <View className="w-2.5 h-2.5 rounded-full bg-tertiary" />

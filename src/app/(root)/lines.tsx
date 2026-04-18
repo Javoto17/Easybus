@@ -3,9 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigation, useRouter } from 'expo-router';
 import { Card, Spinner } from 'heroui-native';
 import React, { useCallback, useEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
-import { ScreenLayout, Typography } from '@/components/shared';
+import { ScreenLayout, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { generateClientRepository } from '@/modules/client/infrastructure/ClientRepository';
 import { LineSummary } from '@/modules/stops/domain/LineDetail';
@@ -296,30 +297,32 @@ const LinesScreen = () => {
     return '#607D8B';
   };
 
-  const renderLine = ({ item }: { item: LineSummary }) => {
+  const renderLine = ({ item, index }: { item: LineSummary; index: number }) => {
     return (
-      <Pressable className="px-5" onPress={() => onPressLine(item.line)}>
-        <Card className="bg-surface-container" variant="default">
-          <Card.Body className="p-4">
-            <View className="flex-row items-center gap-3">
-              <View
-                className="w-12 h-12 rounded-xl items-center justify-center"
-                style={{ backgroundColor: getLineColor(item.line) }}
-              >
-                <Typography variant="title-sm" tone="inverse">
-                  {item.line}
-                </Typography>
+      <Animated.View entering={FadeInUp.delay(index * 50).duration(300)}>
+        <Pressable className="px-5" onPress={() => onPressLine(item.line)}>
+          <Card className="bg-surface-container" variant="default">
+            <Card.Body className="p-4">
+              <View className="flex-row items-center gap-3">
+                <View
+                  className="w-12 h-12 rounded-full items-center justify-center"
+                  style={{ backgroundColor: getLineColor(item.line) }}
+                >
+                  <Typography variant={TypographyVariant.TitleSm} tone={TypographyTone.Inverse}>
+                    {item.line}
+                  </Typography>
+                </View>
+                <View className="flex-1">
+                  <Typography variant={TypographyVariant.TitleSm}>{item.label}</Typography>
+                  <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted}>
+                    {t('line.line')} {item.line}
+                  </Typography>
+                </View>
               </View>
-              <View className="flex-1">
-                <Typography variant="title-sm">{item.label}</Typography>
-                <Text className="text-sm text-on-surface-variant">
-                  {t('line.line')} {item.line}
-                </Text>
-              </View>
-            </View>
-          </Card.Body>
-        </Card>
-      </Pressable>
+            </Card.Body>
+          </Card>
+        </Pressable>
+      </Animated.View>
     );
   };
 
@@ -328,9 +331,9 @@ const LinesScreen = () => {
       <ScreenLayout variant="scroll">
         <View className="flex-1 items-center justify-center py-20">
           <Spinner size="lg" color="primary" />
-          <Text className="text-on-surface-variant mt-4">
+          <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-4">
             {t('lines.loading')}
-          </Text>
+          </Typography>
         </View>
       </ScreenLayout>
     );
@@ -341,15 +344,15 @@ const LinesScreen = () => {
       <ScreenLayout variant="scroll">
         <View className="flex-1 items-center justify-center py-20 px-5">
           <Typography
-            variant="headline-md"
-            tone="danger"
+            variant={TypographyVariant.HeadlineMd}
+            tone={TypographyTone.Danger}
             className="text-center"
           >
             {t('lines.errorLoading')}
           </Typography>
-          <Text className="text-on-surface-variant mt-2 text-center">
+          <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-2 text-center">
             {t('lines.errorLoadingDescription')}
-          </Text>
+          </Typography>
         </View>
       </ScreenLayout>
     );
@@ -364,35 +367,35 @@ const LinesScreen = () => {
       ItemSeparatorComponent={() => <View className="h-3" />}
       ListHeaderComponent={
         <View className="pt-6 pb-4 px-5">
-          <Typography variant="headline-md">
+          <Typography variant={TypographyVariant.HeadlineMd}>
             {t('lines.activeLines')}
           </Typography>
-          <Text className="text-sm text-on-surface-variant mt-2">
+          <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-2">
             {lines?.length || 0} {t('lines.routesAvailable')}
-          </Text>
+          </Typography>
         </View>
       }
       ListFooterComponent={
         <View className="px-5 pb-safe-offset-6 pt-4 gap-3">
           <Card className="bg-surface-container" variant="default">
             <Card.Body className="p-4">
-              <Typography variant="title-sm" className="mb-1">
+              <Typography variant={TypographyVariant.TitleSm} className="mb-1">
                 {t('lines.nightService')}
               </Typography>
-              <Text className="text-xs text-on-surface-variant">
+              <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted}>
                 {t('lines.nightServiceDescription')}
-              </Text>
+              </Typography>
             </Card.Body>
           </Card>
 
           <Card className="bg-surface-container" variant="default">
             <Card.Body className="p-4">
-              <Typography variant="title-sm" className="mb-1">
+              <Typography variant={TypographyVariant.TitleSm} className="mb-1">
                 {t('lines.sustainableTransport')}
               </Typography>
-              <Text className="text-xs text-on-surface-variant">
+              <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted}>
                 {t('lines.sustainableTransportDescription')}
-              </Text>
+              </Typography>
             </Card.Body>
           </Card>
         </View>

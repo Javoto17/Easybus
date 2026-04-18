@@ -1,7 +1,7 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -24,13 +24,13 @@ export const LineDirectionsList = React.memo(
 
     return (
       <View className="px-5 mb-6">
-        <Typography variant="headline-md" className="mb-4">
+        <Typography variant={TypographyVariant.HeadlineMd} className="mb-4">
           {t('line.chooseDirection')}
         </Typography>
 
-        <Text className="text-sm text-on-surface-variant mb-3">
+        <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mb-3">
           {t('line.chooseDirectionDescription')}
-        </Text>
+        </Typography>
 
         <FlatList
           data={directions}

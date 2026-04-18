@@ -5,11 +5,11 @@ import { useFocusEffect } from 'expo-router';
 import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import { Button, Card } from 'heroui-native';
 import React, { useCallback, useEffect, useState } from 'react';
-import { RefreshControl, Text, View } from 'react-native';
+import { RefreshControl, View } from 'react-native';
 
 import { LineDirectionsList, LineHeader } from '@/components/features/line';
 import { StopErrorState } from '@/components/features/stop';
-import { ScreenLayout, Typography } from '@/components/shared';
+import { ScreenLayout, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { generateClientRepository } from '@/modules/client/infrastructure/ClientRepository';
 import { getLineDetail } from '@/modules/stops/application/line/getLineDetail';
@@ -127,15 +127,15 @@ const LineDetailScreen = () => {
     if (item.type === 'empty') {
       return (
         <View className="px-5 py-12 items-center">
-          <View className="w-20 h-20 rounded-2xl bg-surface-container-high items-center justify-center mb-5">
-            <Ionicons name="git-branch-outline" size={32} color="#aaabb0" />
+          <View className="w-20 h-20 rounded-full bg-surface-container-high items-center justify-center mb-5">
+            <Ionicons name="git-branch-outline" size={32} color="#c3c6d3" />
           </View>
-          <Typography variant="headline-md" className="mb-2 text-center">
+          <Typography variant={TypographyVariant.HeadlineMd} className="mb-2 text-center">
             {t('line.noDirections')}
           </Typography>
-          <Text className="text-sm text-on-surface-variant text-center max-w-[280px] mb-5">
+          <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="text-center max-w-[280px] mb-5">
             {t('line.noDirectionsDescription')}
-          </Text>
+          </Typography>
           <Button variant="ghost" size="sm" onPress={onRefresh}>
             <Button.Label>{t('common.retry')}</Button.Label>
           </Button>
@@ -167,28 +167,28 @@ const LineDetailScreen = () => {
       }
       ListFooterComponent={
         <View className="px-5 pb-safe-offset-6 pt-2 gap-3">
-          <Typography variant="headline-md">{t('line.alertsTitle')}</Typography>
+          <Typography variant={TypographyVariant.HeadlineMd}>{t('line.alertsTitle')}</Typography>
 
           <Card className="bg-surface-container" variant="default">
             <Card.Body className="p-4">
-              <Typography variant="title-sm" className="mb-1">
+              <Typography variant={TypographyVariant.TitleSm} className="mb-1">
                 Obras cerca de Moncloa
               </Typography>
-              <Text className="text-xs text-on-surface-variant">
+              <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted}>
                 Se esperan pequeños retrasos por trabajos en accesos
                 principales.
-              </Text>
+              </Typography>
             </Card.Body>
           </Card>
 
           <Card className="bg-surface-container" variant="default">
             <Card.Body className="p-4">
-              <Typography variant="title-sm" className="mb-1">
+              <Typography variant={TypographyVariant.TitleSm} className="mb-1">
                 Actualización de fin de semana
               </Typography>
-              <Text className="text-xs text-on-surface-variant">
+              <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted}>
                 Aumenta la frecuencia nocturna desde las 23:00 en esta línea.
-              </Text>
+              </Typography>
             </Card.Body>
           </Card>
         </View>

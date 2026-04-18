@@ -1,7 +1,7 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
-import { Ionicons, Typography } from '@/components/shared';
+import { Ionicons, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -40,18 +40,18 @@ const SearchRow = ({
       onPress={onPress}
       className="flex-row items-center gap-3 px-5 py-3 active:opacity-80"
     >
-      <View className="h-10 w-10 rounded-xl bg-surface-container-high items-center justify-center">
+      <View className="h-10 w-10 rounded-full bg-surface-container-high items-center justify-center">
         <Ionicons name={icon} size={18} color="#85adff" />
       </View>
       <View className="flex-1">
-        <Typography variant="title-sm">{title}</Typography>
-        <Text className="text-xs text-on-surface-variant mt-0.5">
+        <Typography variant={TypographyVariant.TitleSm}>{title}</Typography>
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mt-0.5">
           {subtitle}
-        </Text>
+        </Typography>
       </View>
       {!!trailingLabel && (
         <View className="rounded-full bg-surface-container-high px-2 py-1">
-          <Typography variant="label-sm" tone="muted" className="text-[10px]">
+          <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="text-[10px]">
             {trailingLabel}
           </Typography>
         </View>
@@ -61,7 +61,7 @@ const SearchRow = ({
 };
 
 const SearchSectionTitle = ({ title }: { title: string }) => (
-  <Typography variant="label-sm" tone="muted" className="px-5 pt-5 pb-2">
+  <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="px-5 pt-5 pb-2">
     {title}
   </Typography>
 );
@@ -85,15 +85,15 @@ export const SearchResultsSection = ({
   if (isLoading) {
     return (
       <View className="pt-safe-or-4 pb-2 px-5">
-        <Typography variant="label-sm" tone="muted" className="mb-2">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mb-2">
           {t('search.title')}
         </Typography>
-        <Typography variant="headline-md">
+        <Typography variant={TypographyVariant.HeadlineMd}>
           {t('search.searchingFor', { query })}
         </Typography>
-        <Text className="text-sm text-on-surface-variant mt-2">
+        <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-2">
           {t('search.loadingResults')}
-        </Text>
+        </Typography>
       </View>
     );
   }
@@ -101,13 +101,13 @@ export const SearchResultsSection = ({
   if (!hasResults) {
     return (
       <View className="pt-safe-or-4 pb-2 px-5">
-        <Typography variant="label-sm" tone="muted" className="mb-2">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mb-2">
           {t('search.title')}
         </Typography>
-        <Typography variant="headline-md">{t('search.noResults')}</Typography>
-        <Text className="text-sm text-on-surface-variant mt-2">
+        <Typography variant={TypographyVariant.HeadlineMd}>{t('search.noResults')}</Typography>
+        <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-2">
           {t('search.noResultsDescription')}
-        </Text>
+        </Typography>
       </View>
     );
   }
@@ -115,10 +115,10 @@ export const SearchResultsSection = ({
   return (
     <View className="pt-safe-or-4 pb-4">
       <View className="px-5 pb-1">
-        <Typography variant="label-sm" tone="muted" className="mb-2">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mb-2">
           {t('search.title')}
         </Typography>
-        <Typography variant="headline-md">
+        <Typography variant={TypographyVariant.HeadlineMd}>
           {t('search.resultsFor', { query })}
         </Typography>
       </View>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -16,31 +16,31 @@ export const StopInfoSection = React.memo(({ stop }: StopInfoSectionProps) => {
 
   return (
     <View className="px-5 mb-8">
-      <Typography variant="headline-md" className="mb-4">
+      <Typography variant={TypographyVariant.HeadlineMd} className="mb-4">
         {t('stop.stationInfo')}
       </Typography>
 
       <View className="p-4 rounded-xl bg-surface-container">
         <View className="gap-3">
           <View className="flex-row justify-between items-center">
-            <Text className="text-sm text-on-surface-variant">
+            <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted}>
               {t('stop.stopId')}
-            </Text>
-            <Typography variant="title-sm">{stop.stop}</Typography>
+            </Typography>
+            <Typography variant={TypographyVariant.TitleSm}>{stop.stop}</Typography>
           </View>
           {stop.pmv && (
             <View className="flex-row justify-between items-center">
-              <Text className="text-sm text-on-surface-variant">
+              <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted}>
                 {t('stop.pmvPanel')}
-              </Text>
-              <Typography variant="title-sm">{stop.pmv}</Typography>
+              </Typography>
+              <Typography variant={TypographyVariant.TitleSm}>{stop.pmv}</Typography>
             </View>
           )}
           <View className="flex-row justify-between items-center">
-            <Text className="text-sm text-on-surface-variant">
+            <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted}>
               {t('stop.coordinates')}
-            </Text>
-            <Typography variant="title-sm">
+            </Typography>
+            <Typography variant={TypographyVariant.TitleSm}>
               {stop.geometry?.coordinates?.[1].toFixed(5)},{' '}
               {stop.geometry?.coordinates?.[0].toFixed(5)}
             </Typography>

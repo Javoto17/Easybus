@@ -3,7 +3,7 @@ import { Button } from 'heroui-native';
 import React from 'react';
 import { FlatList, View } from 'react-native';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant } from '@/components/shared';
 
 import type { Stop } from '@/modules/stops/domain/Stop';
 
@@ -33,7 +33,7 @@ export const FavoritesListSection = React.memo(
     return (
       <View className="mb-6">
         <View className="flex-row justify-between items-center mb-4">
-          <Typography variant="headline-md">Favoritos</Typography>
+          <Typography variant={TypographyVariant.HeadlineMd}>Favoritos</Typography>
           <Button variant="ghost" size="sm" onPress={onPressViewAll}>
             <Button.Label className="text-primary">Ver todos</Button.Label>
           </Button>

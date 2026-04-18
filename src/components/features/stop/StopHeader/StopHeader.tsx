@@ -1,9 +1,9 @@
 import { t } from '@/i18n';
 import { Card, Skeleton } from 'heroui-native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
-import { Typography } from '@/components/shared';
+import { Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import type { Stop } from '@/modules/stops/domain/Stop';
 
@@ -83,14 +83,14 @@ export const StopHeader = React.memo(
 
     return (
       <View className="px-5 pt-6 pb-4 bg-surface">
-        <Typography variant="headline-md" className="mb-1">
+        <Typography variant={TypographyVariant.HeadlineMd} className="mb-1">
           {stop.customName || stop.name}
         </Typography>
-        <Text className="text-sm text-on-surface-variant mb-4">
+        <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mb-4">
           {hasLineContext
             ? `${lineLabel || `${t('glossary.line')} ${fromLine}`} · ${directionName || `${t('glossary.direction')} ${fromDirection}`}`
             : t('stop.stationInfo')}
-        </Text>
+        </Typography>
 
         <Card
           className="rounded-3xl bg-surface-container-low"
@@ -102,8 +102,8 @@ export const StopHeader = React.memo(
                 {hasLineContext ? (
                   <View className="px-2.5 py-1 rounded-full bg-secondary-container">
                     <Typography
-                      variant="label-sm"
-                      tone="secondary"
+                      variant={TypographyVariant.LabelSm}
+                      tone={TypographyTone.Secondary}
                       className="normal-case"
                     >
                       {lineLabel || `${t('glossary.line')} ${fromLine}`}
@@ -112,29 +112,29 @@ export const StopHeader = React.memo(
                 ) : null}
 
                 <Typography
-                  variant="label-sm"
-                  tone="muted"
+                  variant={TypographyVariant.LabelSm}
+                  tone={TypographyTone.Muted}
                   className="normal-case"
                 >
                   {t('glossary.stop')} {stop.stop}
                 </Typography>
               </View>
-              <Typography variant="label-sm" tone="tertiary">
+              <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Tertiary}>
                 {serviceStatus}
               </Typography>
             </View>
 
-            <Typography variant="display-lg">{etaLabel}</Typography>
+            <Typography variant={TypographyVariant.DisplayLg}>{etaLabel}</Typography>
 
-            <Text className="text-sm text-on-surface-variant mt-1 mb-4">
+            <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-1 mb-4">
               {t('glossary.realTime')}
-            </Text>
+            </Typography>
 
             <View className="rounded-2xl bg-surface-container-high px-3 py-3">
-              <Typography variant="headline-md">{directionLabel}</Typography>
-              <Text className="text-xs text-on-surface-variant mt-1">
+              <Typography variant={TypographyVariant.HeadlineMd}>{directionLabel}</Typography>
+              <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mt-1">
                 {t('stop.stationEntrance')}
-              </Text>
+              </Typography>
             </View>
           </Card.Body>
         </Card>
@@ -143,25 +143,25 @@ export const StopHeader = React.memo(
           <View className="flex-row items-center gap-3 mt-4 mb-2">
             <View className="px-3 py-1.5 rounded-full bg-secondary-container">
               <Typography
-                variant="title-sm"
-                tone="secondary"
+                variant={TypographyVariant.TitleSm}
+                tone={TypographyTone.Secondary}
                 className="normal-case"
               >
                 {stop.dataLine[0].line}
               </Typography>
             </View>
-            <Text className="text-xs text-on-surface-variant">
+            <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted}>
               {t('stop.linesInStop')}
-            </Text>
+            </Typography>
           </View>
         )}
 
-        <Typography variant="label-sm" tone="muted" className="mb-1 mt-1">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mb-1 mt-1">
           {t('stop.stationEntrance')}
         </Typography>
-        <Text className="text-sm text-on-surface-variant leading-5">
+        <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="leading-5">
           {stop.postalAddress}
-        </Text>
+        </Typography>
       </View>
     );
   }

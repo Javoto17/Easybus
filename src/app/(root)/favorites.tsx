@@ -2,7 +2,7 @@ import { t } from '@/i18n';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigation } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, RefreshControl, Text, View } from 'react-native';
+import { FlatList, RefreshControl, View } from 'react-native';
 
 import {
   FavoriteItem,
@@ -10,7 +10,7 @@ import {
   FavoritesErrorState,
   FavoritesLoadingState,
 } from '@/components/features/home';
-import { ScreenLayout, Typography } from '@/components/shared';
+import { ScreenLayout, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 import { generateClientRepository } from '@/modules/client/infrastructure/ClientRepository';
 import { getStopsFavorites } from '@/modules/stops/application/favorites/getStopsFavorites';
@@ -80,13 +80,13 @@ const FavoritesScreen = () => {
     if (item.type === 'header') {
       return (
         <View className="px-5 pt-6 pb-4">
-          <Typography variant="label-sm" tone="muted" className="mb-2">
+          <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mb-2">
             {t('home.brand')}
           </Typography>
-          <Typography variant="headline-md">{t('favorites.title')}</Typography>
-          <Text className="text-sm text-on-surface-variant mt-2">
+          <Typography variant={TypographyVariant.HeadlineMd}>{t('favorites.title')}</Typography>
+          <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-2">
             {t('favorites.subtitle')}
-          </Text>
+          </Typography>
         </View>
       );
     }
@@ -112,9 +112,9 @@ const FavoritesScreen = () => {
           scrollEnabled={false}
           contentContainerClassName=""
         />
-        <Text className="text-xs text-on-surface-variant mt-3">
+        <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mt-3">
           {t('favorites.addMore')}
-        </Text>
+        </Typography>
       </View>
     );
   };

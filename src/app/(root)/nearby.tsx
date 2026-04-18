@@ -2,9 +2,9 @@ import { t } from '@/i18n';
 import { useNavigation, useRouter } from 'expo-router';
 import { Button, Card } from 'heroui-native';
 import React, { useEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
-import { ScreenLayout, Typography } from '@/components/shared';
+import { ScreenLayout, Typography, TypographyVariant, TypographyTone } from '@/components/shared';
 
 const nearbyStops = [
   {
@@ -44,24 +44,24 @@ const NearbyScreen = () => {
       contentClassName="px-5 pt-6 pb-safe-offset-6"
       className="flex-1"
     >
-      <Typography variant="label-sm" tone="muted" className="mb-2">
+      <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mb-2">
         {t('nearby.currentLocation')}
       </Typography>
       <Card className="bg-surface-container-high mb-5" variant="default">
         <Card.Body className="p-4">
-          <Typography variant="title-sm">
+          <Typography variant={TypographyVariant.TitleSm}>
             {t('nearby.currentLocationName')}
           </Typography>
-          <Text className="text-xs text-on-surface-variant mt-1">
+          <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mt-1">
             {t('nearby.updatedRecently')}
-          </Text>
+          </Typography>
         </Card.Body>
       </Card>
 
-      <Typography variant="headline-md">{t('nearby.nearbyStops')}</Typography>
-      <Text className="text-sm text-on-surface-variant mt-2 mb-4">
+      <Typography variant={TypographyVariant.HeadlineMd}>{t('nearby.nearbyStops')}</Typography>
+      <Typography variant={TypographyVariant.BodyMd} tone={TypographyTone.Muted} className="mt-2 mb-4">
         {t('nearby.nearbyDescription')}
-      </Text>
+      </Typography>
 
       <View className="gap-3 mb-6">
         {nearbyStops.map((stop) => (
@@ -74,15 +74,15 @@ const NearbyScreen = () => {
               <Card.Body className="p-4">
                 <View className="flex-row items-center justify-between gap-3">
                   <View className="flex-1">
-                    <Typography variant="title-sm">{stop.name}</Typography>
-                    <Text className="text-xs text-on-surface-variant mt-1">
+                    <Typography variant={TypographyVariant.TitleSm}>{stop.name}</Typography>
+                    <Typography variant={TypographyVariant.LabelSm} tone={TypographyTone.Muted} className="mt-1">
                       {stop.subtitle}
-                    </Text>
+                    </Typography>
                   </View>
                   <View className="px-3 py-1.5 rounded-full bg-surface-container-high">
                     <Typography
-                      variant="label-sm"
-                      tone="primary"
+                      variant={TypographyVariant.LabelSm}
+                      tone={TypographyTone.Primary}
                       className="normal-case"
                     >
                       {stop.distance}
