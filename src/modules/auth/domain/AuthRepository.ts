@@ -3,4 +3,5 @@ export interface AuthRepository {
   logout: () => Promise<boolean>;
   validateToken: () => Promise<boolean>;
   getToken: () => Promise<string | null>;
+  getExpiresAt: () => Promise<Date | null>;
 }

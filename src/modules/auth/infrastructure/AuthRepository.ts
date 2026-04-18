@@ -132,5 +132,10 @@ export function generateAuthRepository(
     getToken: async (): Promise<string | null> => {
       return storageRepository.get<string>('auth');
     },
+    getExpiresAt: async (): Promise<Date | null> => {
+      const expiresAtStr = await storageRepository.get<string>('tokenSecExpiration');
+      if (!expiresAtStr) return null;
+      return new Date(expiresAtStr);
+    },
   };
 }
