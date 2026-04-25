@@ -4,6 +4,8 @@ This is a universal mobile transit app built with Expo, targeting iOS, Android, 
 
 This project uses **pnpm** as the package manager.
 
+Before editing any file, read it first. Before modifying a function, grep for all callers. Research before you edit.
+
 ## Development Commands
 
 ```bash
